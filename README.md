@@ -17,7 +17,7 @@ This project showcases my journey as an Information Systems student and a profes
 3.  **Pac-Man Logic Engine** - OOP-based game engine in C++.
 
 ## 🌐 Live Demo
-You can view the live site here: [INSERT_YOUR_LINK_HERE]
+You can view the live site here: https://dunia-khanfa.github.io/portfolio/
 
 ---
 **Contact:** duniakhanfa@gmail.com | [LinkedIn](https://www.linkedin.com/in/duniakhanfa/)
