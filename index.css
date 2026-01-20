@@ -77,7 +77,6 @@ h2 span {
     font-weight: 400; 
 }
 
-/* Stats Grid */
 .stats-grid { 
     display: grid; 
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); 
@@ -107,7 +106,6 @@ h2 span {
     font-weight: 600; 
 }
 
-/* Skills Grid */
 .skills-grid { 
     display: grid; 
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
@@ -144,7 +142,6 @@ h2 span {
     color: var(--text-dim); 
 }
 
-/* Project Cards Grid */
 .grid-layout { 
     display: grid; 
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
@@ -159,7 +156,25 @@ h2 span {
     transition: 0.3s; 
     display: flex; 
     flex-direction: column; 
-    justify-content: space-between; 
+    justify-content: flex-start; 
+}
+
+/* עיצוב התמונה בתוך הכרטיס */
+.card-image-container {
+    width: 100%;
+    height: 140px;
+    background: #000;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.card-embedded-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: #f0f0f0; /* צבע רקע לתמונה הלבנה שתשתלב */
 }
 
 .card:hover { 
@@ -171,6 +186,7 @@ h2 span {
     color: var(--primary); 
     margin-top: 0; 
     font-size: 1.2rem; 
+    margin-bottom: 10px;
 }
 
 .card p { 
@@ -184,6 +200,7 @@ h2 span {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
+    margin-top: auto;
 }
 
 .project-link { 
@@ -197,7 +214,6 @@ h2 span {
     text-decoration: underline; 
 }
 
-/* Certifications */
 .cert-gallery { 
     display: flex; 
     flex-wrap: wrap; 
@@ -221,8 +237,8 @@ h2 span {
 }
 
 .cert-link img { 
-    width: 90%; 
-    height: 90%; 
+    width: 100%; 
+    height: 100%; 
     object-fit: contain; 
 }
 
@@ -238,11 +254,6 @@ h2 span {
     display: flex; 
     align-items: center; 
     justify-content: center; 
-}
-
-/* Links & Footer */
-.hero-links {
-    margin-top: 20px;
 }
 
 .hero-links a { 
