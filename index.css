@@ -10,8 +10,7 @@ body {
     font-family: 'Inter', sans-serif; 
     background-color: var(--bg); 
     color: var(--text); 
-    margin: 0; 
-    padding: 0; 
+    margin: 0; padding: 0; 
     scroll-behavior: smooth; 
 }
 
@@ -27,256 +26,62 @@ header {
     color: var(--primary); 
     padding: 6px 20px; 
     border-radius: 50px; 
-    font-weight: 600; 
-    font-size: 0.85rem; 
-    margin-bottom: 20px; 
-    display: inline-block; 
+    font-weight: 600; font-size: 0.85rem; 
+    margin-bottom: 20px; display: inline-block; 
 }
 
-h1 { 
-    font-size: 3.5rem; 
-    margin: 0; 
-    font-weight: 800; 
-    letter-spacing: -1px; 
-}
+h1 { font-size: 3.5rem; margin: 0; font-weight: 800; letter-spacing: -1px; }
+.sub-title { font-size: 1.3rem; color: var(--text-dim); margin-top: 5px; }
+.about-text { max-width: 750px; margin: 25px auto; color: var(--text-dim); line-height: 1.6; font-size: 1.1rem; }
 
-.sub-title { 
-    font-size: 1.3rem; 
-    color: var(--text-dim); 
-    margin-top: 5px; 
-}
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+section { margin-bottom: 70px; }
+h2 { font-size: 1.8rem; margin-bottom: 30px; font-weight: 800; border-left: 4px solid var(--primary); padding-left: 15px; }
+h2 span { color: var(--text-dim); font-weight: 400; }
 
-.about-text { 
-    max-width: 750px; 
-    margin: 25px auto; 
-    color: var(--text-dim); 
-    line-height: 1.6; 
-    font-size: 1.1rem; 
-}
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; margin-bottom: 50px; }
+.stat-item { background: var(--card-bg); padding: 20px; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
+.stat-item span { font-size: 1.8rem; font-weight: 800; color: var(--primary); display: block; }
+.stat-item label { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; font-weight: 600; }
 
-.container { 
-    max-width: 1100px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
-}
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.skill-group { background: rgba(255,255,255,0.02); padding: 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
+.skill-group h3 { font-size: 1.1rem; color: var(--primary); margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { background: #1f2937; padding: 5px 12px; border-radius: 8px; font-size: 0.85rem; color: var(--text-dim); }
 
-section { 
-    margin-bottom: 70px; 
-}
+.grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+.card { background: var(--card-bg); padding: 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; display: flex; flex-direction: column; }
+.card:hover { border-color: var(--primary); transform: translateY(-5px); }
 
-h2 { 
-    font-size: 1.8rem; 
-    margin-bottom: 30px; 
-    font-weight: 800; 
-    border-left: 4px solid var(--primary); 
-    padding-left: 15px; 
-}
-
-h2 span { 
-    color: var(--text-dim); 
-    font-weight: 400; 
-}
-
-.stats-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); 
-    gap: 15px; 
-    margin-bottom: 50px; 
-}
-
-.stat-item { 
-    background: var(--card-bg); 
-    padding: 20px; 
-    border-radius: 16px; 
-    text-align: center; 
-    border: 1px solid rgba(255,255,255,0.05); 
-}
-
-.stat-item span { 
-    font-size: 1.8rem; 
-    font-weight: 800; 
-    color: var(--primary); 
-    display: block; 
-}
-
-.stat-item label { 
-    font-size: 0.75rem; 
-    color: var(--text-dim); 
-    text-transform: uppercase; 
-    font-weight: 600; 
-}
-
-.skills-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 20px; 
-}
-
-.skill-group { 
-    background: rgba(255,255,255,0.02); 
-    padding: 25px; 
-    border-radius: 20px; 
-    border: 1px solid rgba(255,255,255,0.05); 
-}
-
-.skill-group h3 { 
-    font-size: 1.1rem; 
-    color: var(--primary); 
-    margin-top: 0; 
-    margin-bottom: 15px; 
-    border-bottom: 1px solid rgba(255,255,255,0.1); 
-    padding-bottom: 10px; 
-}
-
-.tags { 
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 8px; 
-}
-
-.tag { 
-    background: #1f2937; 
-    padding: 5px 12px; 
-    border-radius: 8px; 
-    font-size: 0.85rem; 
-    color: var(--text-dim); 
-}
-
-.grid-layout { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-    gap: 20px; 
-}
-
-.card { 
-    background: var(--card-bg); 
-    padding: 25px; 
-    border-radius: 20px; 
-    border: 1px solid rgba(255,255,255,0.05); 
-    transition: 0.3s; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: flex-start; 
-}
-
-/* עיצוב התמונה בתוך הכרטיס */
-.card-image-container {
-    width: 100%;
-    height: 140px;
-    background: #000;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-.card-embedded-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    background-color: #f0f0f0; /* צבע רקע לתמונה הלבנה שתשתלב */
-}
-
-.card:hover { 
-    border-color: var(--primary); 
-    transform: translateY(-5px); 
-}
-
-.card h3 { 
-    color: var(--primary); 
-    margin-top: 0; 
-    font-size: 1.2rem; 
-    margin-bottom: 10px;
-}
-
-.card p { 
-    font-size: 0.9rem; 
-    color: var(--text-dim); 
-    line-height: 1.5; 
-    margin-bottom: 20px; 
-}
-
-.project-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: auto;
-}
-
-.project-link { 
-    color: var(--primary); 
-    text-decoration: none; 
-    font-weight: bold; 
-    font-size: 0.8rem; 
-}
-
-.project-link:hover { 
-    text-decoration: underline; 
-}
-
-.cert-gallery { 
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 15px; 
-    justify-content: center; 
-    align-items: center; 
-}
-
-.cert-link { 
-    background: #fff; 
+/* עיצוב התמונה המוטמעת בתוך הכרטיס */
+.card-image-container { 
+    width: 100%; 
+    height: 140px; 
+    background: #ffffff; 
     border-radius: 12px; 
-    height: 110px; 
-    min-width: 150px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
+    margin-bottom: 15px; 
     overflow: hidden; 
-    transition: 0.3s; 
-    border: 2px solid transparent; 
-    text-decoration: none; 
+    border: 1px solid rgba(255,255,255,0.1); 
 }
 
-.cert-link img { 
+.card-embedded-img { 
     width: 100%; 
     height: 100%; 
     object-fit: contain; 
 }
 
-.cert-link:hover { 
-    transform: scale(1.05); 
-    border-color: var(--primary); 
-}
+.card h3 { color: var(--primary); margin-top: 0; font-size: 1.2rem; }
+.card p { font-size: 0.9rem; color: var(--text-dim); line-height: 1.5; margin-bottom: 20px; }
+.project-links { display: flex; flex-wrap: wrap; gap: 15px; margin-top: auto; }
+.project-link { color: var(--primary); text-decoration: none; font-weight: bold; font-size: 0.8rem; }
 
-.excel-box { 
-    min-width: 140px !important; 
-    max-width: 140px; 
-    height: 105px !important; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-}
+.cert-gallery { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; align-items: center; }
+.cert-link { background: #fff; border-radius: 12px; height: 110px; min-width: 150px; display: flex; align-items: center; justify-content: center; overflow: hidden; transition: 0.3s; border: 2px solid transparent; }
+.cert-link img { width: 100%; height: 100%; object-fit: contain; }
+.cert-link:hover { transform: scale(1.05); border-color: var(--primary); }
 
-.hero-links a { 
-    color: var(--primary); 
-    text-decoration: none; 
-    font-weight: 600; 
-    margin: 0 10px; 
-    border: 1px solid var(--primary); 
-    padding: 8px 24px; 
-    border-radius: 50px; 
-    transition: 0.3s; 
-    display: inline-block;
-}
-
-.hero-links a:hover { 
-    background: var(--primary); 
-    color: #000; 
-}
-
-footer { 
-    padding: 50px 20px; 
-    text-align: center; 
-    border-top: 1px solid rgba(255,255,255,0.05); 
-    color: var(--text-dim); 
-}
+.hero-links a { color: var(--primary); text-decoration: none; font-weight: 600; margin: 0 10px; border: 1px solid var(--primary); padding: 8px 24px; border-radius: 50px; transition: 0.3s; display: inline-block; }
+.hero-links a:hover { background: var(--primary); color: #000; }
+footer { padding: 50px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-dim); }
 
