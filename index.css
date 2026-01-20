@@ -1,4 +1,11 @@
-:root { --primary: #00d95a; --bg: #05070a; --card-bg: #111827; --text: #ffffff; --text-dim: #9ca3af; }
+ :root { 
+    --primary: #00d95a; 
+    --bg: #05070a; 
+    --card-bg: #111827; 
+    --text: #ffffff; 
+    --text-dim: #9ca3af; 
+}
+
 body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 0; scroll-behavior: smooth; }
 
 header { padding: 60px 20px; text-align: center; background: radial-gradient(circle at top, #111827 0%, #05070a 100%); }
@@ -24,21 +31,25 @@ h2 { font-size: 1.8rem; margin-bottom: 30px; font-weight: 800; border-left: 4px 
 .tag { background: #1f2937; padding: 5px 12px; border-radius: 8px; font-size: 0.85rem; color: var(--text-dim); }
 
 .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
-.card { background: var(--card-bg); padding: 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+.card { background: var(--card-bg); padding: 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
 .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+
+/* סגנון מיוחד לכרטיס ה-SAP */
+.featured-card { border-top: 4px solid var(--primary) !important; background: linear-gradient(180deg, rgba(0, 217, 90, 0.05) 0%, var(--card-bg) 100%); }
+.featured-badge { font-size: 0.65rem; font-weight: 800; color: var(--primary); letter-spacing: 1.5px; margin-bottom: 12px; text-transform: uppercase; }
+
 .card h3 { color: var(--primary); margin-top: 0; font-size: 1.2rem; }
-.card p { font-size: 0.9rem; color: var(--text-dim); }
-.project-link { color: var(--primary); text-decoration: none; font-weight: bold; font-size: 0.8rem; display: inline-block; margin-top: 15px; margin-right: 15px; }
+.card p { font-size: 0.9rem; color: var(--text-dim); margin-bottom: 15px; }
+.project-link { color: var(--primary); text-decoration: none; font-weight: bold; font-size: 0.8rem; margin-right: 15px; }
+.project-link:hover { text-decoration: underline; }
 
 .cert-gallery { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; align-items: center; }
 .cert-link { background: #fff; border-radius: 12px; height: 110px; min-width: 150px; display: flex; align-items: center; justify-content: center; overflow: hidden; transition: 0.3s; border: 2px solid transparent; text-decoration: none; }
 .cert-link img { width: 90%; height: 90%; object-fit: contain; }
 .cert-link:hover { transform: scale(1.05); border-color: var(--primary); }
 
-.excel-box { min-width: 140px !important; max-width: 140px; height: 105px !important; }
+.excel-box { min-width: 140px !important; max-width: 140px; height: 105px !important; line-height: 85px; }
 
 .hero-links a { color: var(--primary); text-decoration: none; font-weight: 600; margin: 0 10px; border: 1px solid var(--primary); padding: 8px 24px; border-radius: 50px; transition: 0.3s; }
 .hero-links a:hover { background: var(--primary); color: #000; }
 footer { padding: 50px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-dim); }
-    
-
