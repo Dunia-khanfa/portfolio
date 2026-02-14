@@ -5,139 +5,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dunia Khanfa | IS Implementer & Data Analyst</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #00d95a;
-            --bg: #05070a;
-            --card-bg: #111827;
-            --text: #ffffff;
-            --text-dim: #9ca3af;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0; padding: 0;
-            scroll-behavior: smooth;
-        }
-        header {
-            padding: 60px 20px;
-            text-align: center;
-            background: radial-gradient(circle at top, #111827 0%, #05070a 100%);
-        }
-        .highlight-badge {
-            background: rgba(0, 217, 90, 0.1);
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            padding: 6px 20px;
-            border-radius: 50px;
-            font-weight: 600; font-size: 0.85rem;
-            margin-bottom: 20px; display: inline-block;
-        }
-        h1 { font-size: 3.5rem; margin: 0; font-weight: 800; letter-spacing: -1px; }
-        .sub-title { font-size: 1.3rem; color: var(--text-dim); margin-top: 5px; }
-        .about-text { max-width: 750px; margin: 25px auto; color: var(--text-dim); line-height: 1.6; font-size: 1.1rem; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        section { margin-bottom: 70px; }
-        h2 { font-size: 1.8rem; margin-bottom: 30px; font-weight: 800; border-left: 4px solid var(--primary); padding-left: 15px; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; margin-bottom: 50px; }
-        .stat-item { background: var(--card-bg); padding: 20px; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
-        .stat-item span { font-size: 1.8rem; font-weight: 800; color: var(--primary); display: block; }
-        .stat-item label { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; font-weight: 600; }
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .skill-group { background: rgba(255,255,255,0.02); padding: 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
-        .skill-group h3 { font-size: 1.1rem; color: var(--primary); margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
-        .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { background: #1f2937; padding: 5px 12px; border-radius: 8px; font-size: 0.85rem; color: var(--text-dim); }
-        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
-        .card { background: var(--card-bg); padding: 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .card h3 { color: var(--primary); margin-top: 0; font-size: 1.2rem; }
-        .card p { font-size: 0.9rem; color: var(--text-dim); line-height: 1.5; margin-bottom: 20px; }
-        .project-link { color: var(--primary); text-decoration: none; font-weight: bold; font-size: 0.8rem; margin-right: 15px; }
-        .cert-gallery { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; align-items: center; }
-        .cert-link { background: #fff; border-radius: 12px; height: 110px; min-width: 150px; display: flex; align-items: center; justify-content: center; overflow: hidden; transition: 0.3s; border: 2px solid transparent; }
-        .cert-link img { width: 100%; height: 100%; object-fit: contain; }
-        .hero-links a { color: var(--primary); text-decoration: none; font-weight: 600; margin: 0 10px; border: 1px solid var(--primary); padding: 8px 24px; border-radius: 50px; transition: 0.3s; display: inline-block; }
-        footer { padding: 50px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-dim); }
-    </style>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <header>
-        <div class="highlight-badge">B.Sc. INFORMATION SYSTEMS | GPA 91.2</div>
-        <h1>Dunia Khanfa</h1>
-        <p class="sub-title">Information Systems Implementer & Data Analyst</p>
-        <p class="about-text">
-            Information Systems student & SAP Specialist at Matrix. Combining analytical expertise from Greenpeace with a passion for Python, SQL, and C++ to transform complex data into strategic impact.
-        </p>
-        <div class="hero-links">
-            <a href="https://www.linkedin.com/in/duniakhanfa/" target="_blank">LinkedIn</a>
-            <a href="https://github.com/Dunia-khanfa" target="_blank">GitHub</a>
-        </div>
-    </header>
-    <div class="container">
-        <div class="stats-grid">
-            <div class="stat-item"><span>100</span><label>Data Science</label></div>
-            <div class="stat-item"><span>92</span><label>SQL</label></div>
-            <div class="stat-item"><span>92</span><label>Java</label></div>
-            <div class="stat-item"><span>92</span><label>Accounting</label></div>
-            <div class="stat-item"><span>86</span><label>Data Structures</label></div>
-            <div class="stat-item"><span>83</span><label>Python</label></div>
-        </div>
-        <section>
-            <h2>Professional <span>Skills</span></h2>
-            <div class="skills-grid">
-                <div class="skill-group">
-                    <h3>IS Implementation (Matrix)</h3>
-                    <div class="tags">
-                        <span class="tag">SAP ERP Specialist</span><span class="tag">Business Process Analysis</span>
-                        <span class="tag">QFLOW</span><span class="tag">Chameleon</span>
-                        <span class="tag">UAT & User Training</span>
-                    </div>
-                </div>
-                <div class="skill-group">
-                    <h3>Data Analysis (Greenpeace)</h3>
-                    <div class="tags">
-                        <span class="tag">Python (Pandas, NumPy)</span><span class="tag">SQL & BigQuery</span>
-                        <span class="tag">Looker Studio</span><span class="tag">Data Automation</span>
-                        <span class="tag">Debugging & Troubleshooting</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section>
-            <h2>Strategic Projects</h2>
-            <div class="grid-layout">
-                <div class="card">
-                    <h3>Healthcare No-Show Analytics</h3>
-                    <p>Data-driven analysis of patient appointment patterns to optimize healthcare operations and reduce no-show rates.</p>
-                    <a href="https://github.com/Dunia-khanfa/Healthcare-Operations-Patient-No-Show-Analytics.git" target="_blank" class="project-link">GITHUB →</a>
-                </div>
-                <div class="card">
-                    <h3>Customer Payments Dashboard</h3>
-                    <p>Advanced Power BI ecosystem for demographic spend analysis and KPI tracking.</p>
-                    <a href="https://github.com/Dunia-khanfa/Customer-Payments-Dashboard" target="_blank" class="project-link">CODE →</a>
-                </div>
-                <div class="card">
-                    <h3>Order Analytics System</h3>
-                    <p>MySQL relational database designed for business intelligence and revenue tracking.</p>
-                    <a href="https://github.com/Dunia-khanfa/Order-Analytics-System" target="_blank" class="project-link">GITHUB →</a>
-                </div>
-                <div class="card">
-                    <h3>Pac-Man Logic Engine</h3>
-                    <p>C++ game engine featuring OOP architecture and AI-driven behavior logic.</p>
-                    <a href="https://github.com/Dunia-khanfa/PacMan" target="_blank" class="project-link">GITHUB →</a>
-                </div>
-            </div>
-        </section>
-        <section>
-            <h2>Certifications</h2>
-            <div class="cert-gallery">
-                <img src="https://udemy-certificate.s3.amazonaws.com/image/UC-e99fd17c-581a-471c-8e27-ece30d4803c2.jpg" alt="Python" style="width:150px; border-radius:12px;">
-                <img src="https://udemy-certificate.s3.amazonaws.com/image/UC-0955475a-ee92-4014-8811-e2b9038af3d5.jpg" alt="SQL" style="width:150px; border-radius:12px;">
-            </div>
-        </section>
+
+<header>
+    <div class="highlight-badge">B.Sc. INFORMATION SYSTEMS | GPA 91.2</div>
+    <h1>Dunia Khanfa</h1>
+    <p class="sub-title">Information Systems Implementer & Data Analyst</p>
+    <p class="about-text">
+        Information Systems student & SAP Specialist at Matrix. Combining analytical expertise from Greenpeace with a passion for Python, SQL, and C++ to transform complex data into strategic impact.
+    </p>
+    <div class="hero-links">
+        <a href="https://www.linkedin.com/in/duniakhanfa/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/Dunia-khanfa" target="_blank">GitHub</a>
     </div>
-    <footer>Dunia Khanfa | 054-2099827 | duniakhanfa@gmail.com</footer>
+</header>
+
+<div class="container">
+    <div class="stats-grid">
+        <div class="stat-item"><span>100</span><label>Data Science</label></div>
+        <div class="stat-item"><span>92</span><label>SQL</label></div>
+        <div class="stat-item"><span>92</span><label>Java</label></div>
+        <div class="stat-item"><span>92</span><label>Accounting</label></div>
+        <div class="stat-item"><span>86</span><label>Data Structures</label></div>
+        <div class="stat-item"><span>83</span><label>Python</label></div>
+    </div>
+
+    <section>
+        <h2>Professional <span>Skills</span></h2>
+        <div class="skills-grid">
+            <div class="skill-group">
+                <h3>IS Implementation (Matrix)</h3>
+                <div class="tags">
+                    <span class="tag">SAP ERP Specialist</span><span class="tag">Business Process Analysis</span>
+                    <span class="tag">QFLOW</span><span class="tag">Chameleon</span>
+                    <span class="tag">UAT & User Training</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h3>Data Analysis (Greenpeace)</h3>
+                <div class="tags">
+                    <span class="tag">Python (Pandas, NumPy)</span><span class="tag">SQL & BigQuery</span>
+                    <span class="tag">Looker Studio</span><span class="tag">Data Automation</span>
+                    <span class="tag">Debugging & Troubleshooting</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Strategic Projects</h2>
+        <div class="grid-layout">
+            <div class="card">
+                <h3>SAP Procurement Strategic Analytics Hub</h3>
+                <p>A professional decision-support system showcasing SAP MM and Supply Chain Analytics. Demonstrates transforming operational ERP data into strategic business insights to drive ROI.</p>
+                <a href="https://github.com/Dunia-khanfa" target="_blank" class="project-link">GITHUB →</a>
+            </div>
+
+            <div class="card">
+                <h3>Healthcare No-Show Analytics</h3>
+                <p>Data-driven analysis of patient appointment patterns to optimize healthcare operations and reduce no-show rates.</p>
+                <a href="https://github.com/Dunia-khanfa/Healthcare-Operations-Patient-No-Show-Analytics.git" target="_blank" class="project-link">GITHUB →</a>
+            </div>
+
+            <div class="card">
+                <h3>Customer Payments Dashboard</h3>
+                <p>Advanced Power BI ecosystem for demographic spend analysis and KPI tracking.</p>
+                <a href="https://github.com/Dunia-khanfa/Customer-Payments-Dashboard" target="_blank" class="project-link">CODE →</a>
+            </div>
+
+            <div class="card">
+                <h3>Order Analytics System</h3>
+                <p>MySQL relational database designed for business intelligence and revenue tracking.</p>
+                <a href="https://github.com/Dunia-khanfa/Order-Analytics-System" target="_blank" class="project-link">GITHUB →</a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Certifications</h2>
+        <div class="cert-gallery">
+            <a href="https://www.freecodecamp.org/certification/fcc-9e2d03a2-a194-42f3-8f1f-f4b341bafa38/data-analysis-with-python-v7" target="_blank" class="cert-link">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/FreeCodeCamp_logo.png" alt="freeCodeCamp Python">
+            </a>
+            <a href="https://www.udemy.com/certificate/UC-812acd75-5a73-4bb0-ab01-ead33cb7d13f/" target="_blank" class="cert-link">
+                <img src="https://udemy-certificate.s3.amazonaws.com/image/UC-812acd75-5a73-4bb0-ab01-ead33cb7d13f.jpg" alt="SQL Udemy">
+            </a>
+            <a href="https://skillshop.credential.net/ca189c5f-031e-4079-9c15-2ba7e949d980#acc.WU4YOGHl" target="_blank" class="cert-link">
+                <img src="https://www.funnelkake.com/wp-content/uploads/2019/06/google-analytics-developers-logo-header-1080x675.jpg" alt="Google Analytics">
+            </a>
+            <a href="https://app.voxy.com/certificates/proficiency-test/6799175f1b0b6dc715414242/" target="_blank" class="cert-link">
+                <img src="https://voxy.com/wp-content/uploads/2016/06/voxy-logo-blue.png" alt="Voxy English">
+            </a>
+            <a href="https://courses.campus.gov.il/certificates/db08b24faeee4c2fa3df57f149ce4ca0" target="_blank" class="cert-link excel-box" style="background:#217346; color:#fff; font-weight:800; font-size:0.8rem; text-align:center; padding: 10px;">
+                EXCEL ADVANCED
+            </a>
+            <div class="cert-link" style="background:#fff; color:#000; font-weight:800; font-size:0.7rem; text-align:center; padding: 10px;">
+                SAP SPECIALIST (JOHN BRYCE)
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    Dunia Khanfa | 054-2099827 | duniakhanfa@gmail.com
+</footer>
+
 </body>
 </html>
+
