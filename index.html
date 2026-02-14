@@ -5,7 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dunia Khanfa | IS Implementer & Data Analyst</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
+    <style>
+        :root {
+            --primary: #00d95a;
+            --bg: #05070a;
+            --card-bg: #111827;
+            --text: #ffffff;
+            --text-dim: #9ca3af;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0; padding: 0;
+            scroll-behavior: smooth;
+        }
+        header {
+            padding: 80px 20px;
+            text-align: center;
+            background: radial-gradient(circle at top, #111827 0%, #05070a 100%);
+        }
+        .highlight-badge {
+            background: rgba(0, 217, 90, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-weight: 600; font-size: 0.9rem;
+            margin-bottom: 25px; display: inline-block;
+        }
+        h1 { font-size: 4rem; margin: 0; font-weight: 800; letter-spacing: -2px; }
+        .sub-title { font-size: 1.4rem; color: var(--text-dim); margin-top: 10px; }
+        .about-text { max-width: 800px; margin: 30px auto; color: var(--text-dim); line-height: 1.7; font-size: 1.1rem; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        section { margin-bottom: 80px; }
+        h2 { font-size: 2rem; margin-bottom: 40px; font-weight: 800; border-left: 5px solid var(--primary); padding-left: 20px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 20px; margin-bottom: 60px; }
+        .stat-item { background: var(--card-bg); padding: 25px; border-radius: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .stat-item:hover { border-color: var(--primary); background: rgba(0, 217, 90, 0.02); }
+        .stat-item span { font-size: 2rem; font-weight: 800; color: var(--primary); display: block; }
+        .stat-item label { font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; font-weight: 600; margin-top: 5px; display: block; }
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .card { background: var(--card-bg); padding: 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+        .card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .card h3 { color: var(--primary); margin-top: 0; font-size: 1.3rem; margin-bottom: 15px; }
+        .card p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 25px; flex-grow: 1; }
+        .project-link { color: var(--primary); text-decoration: none; font-weight: 800; font-size: 0.85rem; letter-spacing: 1px; }
+        .cert-gallery { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .cert-link { background: #111827; border-radius: 16px; padding: 15px; width: 180px; height: 120px; display: flex; align-items: center; justify-content: center; overflow: hidden; transition: 0.3s; border: 1px solid rgba(255,255,255,0.1); }
+        .cert-link img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .cert-link:hover { transform: scale(1.05); border-color: var(--primary); }
+        .hero-links a { color: var(--primary); text-decoration: none; font-weight: 600; margin: 0 12px; border: 1.5px solid var(--primary); padding: 10px 30px; border-radius: 50px; transition: 0.3s; display: inline-block; }
+        .hero-links a:hover { background: var(--primary); color: #000; }
+        footer { padding: 60px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-dim); font-size: 0.9rem; }
+    </style>
 </head>
 <body>
 
@@ -33,33 +86,11 @@
     </div>
 
     <section>
-        <h2>Professional <span>Skills</span></h2>
-        <div class="skills-grid">
-            <div class="skill-group">
-                <h3>IS Implementation (Matrix)</h3>
-                <div class="tags">
-                    <span class="tag">SAP ERP Specialist</span><span class="tag">Business Process Analysis</span>
-                    <span class="tag">QFLOW</span><span class="tag">Chameleon</span>
-                    <span class="tag">UAT & User Training</span>
-                </div>
-            </div>
-            <div class="skill-group">
-                <h3>Data Analysis (Greenpeace)</h3>
-                <div class="tags">
-                    <span class="tag">Python (Pandas, NumPy)</span><span class="tag">SQL & BigQuery</span>
-                    <span class="tag">Looker Studio</span><span class="tag">Data Automation</span>
-                    <span class="tag">Debugging & Troubleshooting</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h2>Strategic Projects</h2>
+        <h2>Strategic <span>Projects</span></h2>
         <div class="grid-layout">
             <div class="card">
                 <h3>SAP Procurement Strategic Analytics Hub</h3>
-                <p>A professional decision-support system showcasing SAP MM and Supply Chain Analytics. Demonstrates transforming operational ERP data into strategic business insights to drive ROI.</p>
+                <p>Professional decision-support system in SAP MM and Supply Chain Analytics. Demonstrates transforming operational ERP data into strategic insights that drive ROI.</p>
                 <a href="https://github.com/Dunia-khanfa" target="_blank" class="project-link">GITHUB →</a>
             </div>
 
@@ -84,24 +115,24 @@
     </section>
 
     <section>
-        <h2>Certifications</h2>
+        <h2>Professional <span>Certifications</span></h2>
         <div class="cert-gallery">
             <a href="https://www.freecodecamp.org/certification/fcc-9e2d03a2-a194-42f3-8f1f-f4b341bafa38/data-analysis-with-python-v7" target="_blank" class="cert-link">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/FreeCodeCamp_logo.png" alt="freeCodeCamp Python">
             </a>
             <a href="https://www.udemy.com/certificate/UC-812acd75-5a73-4bb0-ab01-ead33cb7d13f/" target="_blank" class="cert-link">
-                <img src="https://udemy-certificate.s3.amazonaws.com/image/UC-812acd75-5a73-4bb0-ab01-ead33cb7d13f.jpg" alt="SQL Udemy">
+                <img src="https://udemy-certificate.s3.amazonaws.com/image/UC-812acd75-5a73-4bb0-ab01-ead33cb7d13f.jpg" alt="SQL Certificate">
             </a>
             <a href="https://skillshop.credential.net/ca189c5f-031e-4079-9c15-2ba7e949d980#acc.WU4YOGHl" target="_blank" class="cert-link">
                 <img src="https://www.funnelkake.com/wp-content/uploads/2019/06/google-analytics-developers-logo-header-1080x675.jpg" alt="Google Analytics">
             </a>
             <a href="https://app.voxy.com/certificates/proficiency-test/6799175f1b0b6dc715414242/" target="_blank" class="cert-link">
-                <img src="https://voxy.com/wp-content/uploads/2016/06/voxy-logo-blue.png" alt="Voxy English">
+                <img src="https://voxy.com/wp-content/uploads/2016/06/voxy-logo-blue.png" alt="Voxy Proficiency">
             </a>
-            <a href="https://courses.campus.gov.il/certificates/db08b24faeee4c2fa3df57f149ce4ca0" target="_blank" class="cert-link excel-box" style="background:#217346; color:#fff; font-weight:800; font-size:0.8rem; text-align:center; padding: 10px;">
+            <a href="https://courses.campus.gov.il/certificates/db08b24faeee4c2fa3df57f149ce4ca0" target="_blank" class="cert-link" style="background:#217346; color:#fff; font-weight:800; font-size:0.75rem; text-align:center;">
                 EXCEL ADVANCED
             </a>
-            <div class="cert-link" style="background:#fff; color:#000; font-weight:800; font-size:0.7rem; text-align:center; padding: 10px;">
+            <div class="cert-link" style="background:#fff; color:#000; font-weight:800; font-size:0.75rem; text-align:center;">
                 SAP SPECIALIST (JOHN BRYCE)
             </div>
         </div>
@@ -114,4 +145,3 @@
 
 </body>
 </html>
-
