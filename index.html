@@ -3,103 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dunia Khanfa | Portfolio</title>
+    <title>Dunia Khanfa | Portfolio Elite</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
         :root {
-            --bg: #000000;
+            --bg: #030303;
             --primary: #00d95a;
             --text: #ffffff;
-            --text-dim: #888888;
-            --border: rgba(255, 255, 255, 0.1);
+            --text-dim: #a1a1a1;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --glass: blur(12px);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg);
             color: var(--text);
-            line-height: 1.1;
+            line-height: 1.2;
             overflow-x: hidden;
         }
 
-        /* --- Loader Logic (From App.jsx) --- */
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+        /* --- Loader --- */
         #loader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; z-index: 10000;
             display: flex; align-items: center; justify-content: center;
-            transition: opacity 0.5s ease;
         }
-        #loader.fade-out { opacity: 0; pointer-events: none; }
-        .loader-text { font-weight: 900; font-size: 2rem; letter-spacing: -2px; }
+        .loader-text { font-weight: 900; font-size: 2.5rem; letter-spacing: -2px; color: var(--primary); }
 
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-
-        /* --- Hero (From Hero.jsx) --- */
-        header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .hero-badge { color: var(--primary); font-weight: 700; letter-spacing: 3px; font-size: 0.8rem; margin-bottom: 20px; text-transform: uppercase; }
-        h1 { font-size: clamp(4rem, 15vw, 10rem); font-weight: 900; letter-spacing: -0.05em; line-height: 0.85; }
-        .hero-sub { color: var(--text-dim); font-size: 1.5rem; margin-top: 30px; max-width: 600px; line-height: 1.4; }
-
-        /* --- Stats Row --- */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            border-top: 1px solid var(--border);
+        /* --- Navigation Menu --- */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 25px 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; background: rgba(0,0,0,0.5); backdrop-filter: var(--glass);
             border-bottom: 1px solid var(--border);
-            margin: 100px 0;
         }
-        .stat-item { padding: 60px 40px; border-right: 1px solid var(--border); }
-        .stat-item span { font-size: 4rem; font-weight: 900; display: block; }
-        .stat-item label { color: var(--text-dim); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; font-weight: 700; }
-
-        /* --- ScrollSection (From ScrollSection.jsx) --- */
-        .scroll-section {
-            padding: 120px 0;
-            border-top: 1px solid var(--border);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+        .logo { font-weight: 900; font-size: 1.2rem; color: var(--primary); }
+        .nav-links a {
+            color: var(--text); text-decoration: none; font-size: 0.8rem;
+            text-transform: uppercase; letter-spacing: 2px; font-weight: 700;
+            margin-left: 30px; transition: 0.3s; opacity: 0.6;
         }
-        .section-info h2 { font-size: 0.8rem; color: var(--primary); text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; }
-        .section-info h3 { font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; margin-bottom: 20px; }
-        .section-info p { color: var(--text-dim); font-size: 1.2rem; line-height: 1.4; margin-bottom: 30px; max-width: 500px; }
-        .project-link { color: #fff; text-decoration: none; font-weight: 900; border-bottom: 2px solid var(--primary); padding-bottom: 5px; }
+        .nav-links a:hover { opacity: 1; color: var(--primary); }
 
-        .section-visual {
-            background: #0a0a0a;
-            height: 500px;
-            border-radius: 4px;
-            overflow: hidden;
-            display: flex; align-items: center; justify-content: center;
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 50px; }
+
+        /* --- Hero --- */
+        header { height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; }
+        .hero-badge { color: var(--primary); font-weight: 700; letter-spacing: 5px; font-size: 0.8rem; margin-bottom: 25px; text-transform: uppercase; }
+        h1 { font-size: clamp(4rem, 18vw, 12rem); font-weight: 900; letter-spacing: -0.06em; line-height: 0.8; margin-bottom: 40px; }
+        .hero-sub { color: var(--text-dim); font-size: clamp(1rem, 2vw, 1.8rem); max-width: 700px; line-height: 1.4; font-weight: 300; }
+
+        /* --- Stats Grid --- */
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 150px 0;
         }
-        .section-visual img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
-        .scroll-section:hover .section-visual img { opacity: 1; transform: scale(1.05); }
+        .stat-item { background: var(--bg); padding: 70px 40px; transition: 0.5s; }
+        .stat-item:hover { background: #080808; }
+        .stat-item span { font-size: 5rem; font-weight: 900; display: block; line-height: 1; color: var(--text); }
+        .stat-item label { color: var(--primary); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 3px; font-weight: 700; margin-top: 15px; display: block; }
 
-        /* --- Certs & Footer --- */
-        .certs { padding: 100px 0; display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
-        .cert-box { background: #fff; padding: 20px; height: 80px; min-width: 160px; display: flex; align-items: center; justify-content: center; border-radius: 4px; filter: grayscale(1); transition: 0.3s; }
-        .cert-box:hover { filter: grayscale(0); transform: translateY(-5px); }
-        .cert-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        /* --- Projects Sections --- */
+        .section-header { margin-bottom: 80px; }
+        .section-header h2 { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 6px; }
 
-        footer { padding: 100px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 0.9rem; }
-
-        @media (max-width: 900px) {
-            .scroll-section { grid-template-columns: 1fr; padding: 60px 0; }
-            .section-visual { height: 300px; }
-            h1 { font-size: 4rem; }
+        .project-block {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+            padding: 100px 0; border-top: 1px solid var(--border);
         }
+        .project-content h3 { font-size: clamp(2rem, 5vw, 4.5rem); font-weight: 800; margin-bottom: 30px; letter-spacing: -2px; }
+        .project-content p { color: var(--text-dim); font-size: 1.3rem; line-height: 1.5; margin-bottom: 40px; max-width: 550px; }
+        .btn-link {
+            color: #fff; text-decoration: none; font-weight: 900; font-size: 0.9rem;
+            text-transform: uppercase; letter-spacing: 2px; border: 1px solid var(--border);
+            padding: 15px 30px; border-radius: 50px; transition: 0.4s;
+        }
+        .btn-link:hover { background: var(--primary); color: #000; border-color: var(--primary); }
+
+        .project-visual {
+            background: #0a0a0a; height: 550px; border-radius: 8px; overflow: hidden;
+            border: 1px solid var(--border); position: relative;
+        }
+        .project-visual img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .project-block:hover .project-visual img { opacity: 1; transform: scale(1.08); }
+
+        /* --- Certificates --- */
+        .certs-container { padding: 150px 0; text-align: center; }
+        .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 30px; margin-top: 50px; }
+        .cert-card {
+            background: #fff; padding: 30px; height: 120px; display: flex; align-items: center; justify-content: center;
+            border-radius: 8px; transition: 0.4s; filter: grayscale(1); text-decoration: none;
+        }
+        .cert-card:hover { filter: grayscale(0); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,217,90,0.2); }
+        .cert-card img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+        footer { padding: 100px 0; border-top: 1px solid var(--border); text-align: center; opacity: 0.5; font-size: 0.8rem; letter-spacing: 1px; }
+
+        @media (max-width: 1000px) {
+            .project-block { grid-template-columns: 1fr; gap: 40px; }
+            nav { padding: 20px; }
+            .nav-links { display: none; } /* Mobile Menu simplicity */
+        }
+
+        .reveal { opacity: 0; }
     </style>
 </head>
 <body>
@@ -108,111 +128,137 @@
     <div class="loader-text">DUNIA KHANFA</div>
 </div>
 
+<nav>
+    <div class="logo">D.KHANFA</div>
+    <div class="nav-links">
+        <a href="#hero">Intro</a>
+        <a href="#projects">Work</a>
+        <a href="#certs">Certs</a>
+        <a href="mailto:duniakhanfa@gmail.com">Contact</a>
+    </div>
+</nav>
+
 <div class="container">
-    <header>
-        <div class="hero-badge reveal">Information Systems Specialist</div>
-        <h1 class="reveal">CRAFTING<br>STRATEGIC<br>DATA</h1>
-        <p class="hero-sub reveal">Dunia Khanfa. GPA 91.2. Specialized in SAP implementation and high-performance data analytics.</p>
+    <section id="hero">
+        <div class="hero-badge reveal">B.Sc. Information Systems Specialist</div>
+        <h1 class="reveal">DESIGNING<br>THE DATA<br>STRATEGY.</h1>
+        <p class="hero-sub reveal">Dunia Khanfa. GPA 91.2. Transforming complex information systems into seamless Material Management and high-performance analytics solutions.</p>
     </header>
 
-    <section class="stats-row">
+    <section class="stats-grid">
         <div class="stat-item reveal"><span>100</span><label>Data Science</label></div>
         <div class="stat-item reveal"><span>92</span><label>SQL Mastery</label></div>
-        <div class="stat-item reveal"><span>92</span><label>Java</label></div>
-        <div class="stat-item reveal"><span>83</span><label>Python</label></div>
+        <div class="stat-item reveal"><span>92</span><label>Java Expert</label></div>
+        <div class="stat-item reveal"><span>83</span><label>Python Dev</label></div>
     </section>
 
-    <div class="scroll-section reveal">
-        <div class="section-info">
-            <h2>Project 01</h2>
-            <h3>SAP Strategic Analytics</h3>
-            <p>Advanced decision-support system designed for SAP MM and Supply Chain Analytics for Matrix.</p>
-            <a href="https://github.com/Dunia-khanfa/SAP-Procurement-Strategic-Analytics.git" class="project-link" target="_blank">View GitHub</a>
+    <section id="projects">
+        <div class="section-header reveal">
+            <h2>Featured Projects</h2>
         </div>
-        <div class="section-visual">
-            <img src="image_3.png" alt="Dunia at conference">
-        </div>
-    </div>
 
-    <div class="scroll-section reveal">
-        <div class="section-info">
-            <h2>Project 02</h2>
-            <h3>Healthcare Analytics</h3>
-            <p>Behavioral data analysis using Python to optimize scheduling and operational efficiency.</p>
-            <a href="https://github.com/Dunia-khanfa/Healthcare-Operations-Patient-No-Show-Analytics.git" class="project-link" target="_blank">View GitHub</a>
+        <div class="project-block reveal">
+            <div class="project-content">
+                <h3>SAP Procurement Analytics</h3>
+                <p>Advanced decision-support hub for SAP MM and Supply Chain workflows. Built for Matrix to optimize Sheba Medical Center operations.</p>
+                <a href="https://github.com/Dunia-khanfa/SAP-Procurement-Strategic-Analytics.git" class="btn-link" target="_blank">Repository ↗</a>
+            </div>
+            <div class="project-visual">
+                <img src="image_3.png" alt="SAP Project">
+            </div>
         </div>
-        <div class="section-visual">
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1000" alt="Healthcare">
-        </div>
-    </div>
 
-    <div class="scroll-section reveal">
-        <div class="section-info">
-            <h2>Project 03</h2>
-            <h3>Payments Dashboard</h3>
-            <p>Power BI ecosystem for financial KPI tracking and demographic spend analysis.</p>
-            <a href="https://github.com/Dunia-khanfa/Customer-Payments-Dashboard" class="project-link" target="_blank">View Dashboard</a>
+        <div class="project-block reveal">
+            <div class="project-content">
+                <h3>Healthcare No-Show Engine</h3>
+                <p>An AI-driven behavioral analysis using Python to predict and reduce patient no-shows in large medical networks.</p>
+                <a href="https://github.com/Dunia-khanfa/Healthcare-Operations-Patient-No-Show-Analytics.git" class="btn-link" target="_blank">Repository ↗</a>
+            </div>
+            <div class="project-visual">
+                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1500" alt="Health Data">
+            </div>
         </div>
-        <div class="section-visual">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000" alt="Dashboard">
-        </div>
-    </div>
 
-    <div class="scroll-section reveal">
-        <div class="section-info">
-            <h2>Project 04</h2>
-            <h3>Order Analytics (SQL)</h3>
-            <p>MySQL relational database designed for revenue tracking and business intelligence.</p>
-            <a href="https://github.com/Dunia-khanfa/Order-Analytics-System" class="project-link" target="_blank">View Database</a>
+        <div class="project-block reveal">
+            <div class="project-content">
+                <h3>Financial KPI Dashboard</h3>
+                <p>Strategic Power BI ecosystem for demographic spend analysis, providing deep insights into consumer behavior and payments.</p>
+                <a href="https://github.com/Dunia-khanfa/Customer-Payments-Dashboard" class="btn-link" target="_blank">Live View ↗</a>
+            </div>
+            <div class="project-visual">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1500" alt="Dashboard">
+            </div>
         </div>
-        <div class="section-visual">
-            <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=1000" alt="SQL">
-        </div>
-    </div>
 
-    <section class="certs reveal">
-        <div class="cert-box"><img src="https://upload.wikimedia.org/wikipedia/commons/3/39/FreeCodeCamp_logo.png" alt="fCC"></div>
-        <div class="cert-box"><img src="https://www.vectorlogo.zone/logos/udemy/udemy-ar21.svg" alt="Udemy"></div>
-        <div class="cert-box"><img src="https://www.vectorlogo.zone/logos/google_analytics/google_analytics-ar21.svg" alt="Google"></div>
-        <div class="cert-box" style="background: #217346; color: white; font-weight: 900; font-size: 0.8rem;">EXCEL PRO</div>
+        <div class="project-block reveal">
+            <div class="project-content">
+                <h3>Order Analytics SQL</h3>
+                <p>Complete MySQL relational database architecture for business intelligence and end-to-end revenue tracking.</p>
+                <a href="https://github.com/Dunia-khanfa/Order-Analytics-System" class="btn-link" target="_blank">Explore DB ↗</a>
+            </div>
+            <div class="project-visual">
+                <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=1500" alt="SQL Project">
+            </div>
+        </div>
+    </section>
+
+    <section id="certs" class="certs-container">
+        <div class="section-header reveal">
+            <h2>Licenses & Certifications</h2>
+        </div>
+        <div class="certs-grid reveal">
+            <a href="https://www.freecodecamp.org/certification/fcc-9e2d03a2-a194-42f3-8f1f-f4b341bafa38/data-analysis-with-python-v7" target="_blank" class="cert-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/FreeCodeCamp_logo.png" alt="fCC">
+            </a>
+            <a href="https://www.udemy.com/certificate/UC-812acd75-5a73-4bb0-ab01-ead33cb7d13f/" target="_blank" class="cert-card">
+                <img src="https://www.vectorlogo.zone/logos/udemy/udemy-ar21.svg" alt="Udemy">
+            </a>
+            <a href="https://skillshop.credential.net/ca189c5f-031e-4079-9c15-2ba7e949d980#acc.WU4YOGHl" target="_blank" class="cert-card">
+                <img src="https://www.vectorlogo.zone/logos/google_analytics/google_analytics-ar21.svg" alt="Google">
+            </a>
+            <a href="https://courses.campus.gov.il/certificates/db08b24faeee4c2fa3df57f149ce4ca0" target="_blank" class="cert-card" style="background: #217346; filter: none;">
+                <span style="color: #fff; font-weight: 900; font-size: 0.9rem;">EXCEL ADVANCED</span>
+            </a>
+        </div>
     </section>
 
     <footer>
-        <p>DUNIA KHANFA — duniakhanfa@gmail.com — 054-2099827</p>
-        <p style="margin-top: 10px; opacity: 0.5;">© 2026 Dunia Khanfa</p>
+        <p>DUNIA KHANFA — 054-2099827 • duniakhanfa@gmail.com</p>
+        <p style="margin-top: 15px;">© 2026 Crafted with precision and strategy.</p>
     </footer>
 </div>
 
 <script>
-    // GSAP Registration
     gsap.registerPlugin(ScrollTrigger);
 
-    // Loader Dismiss (From App.jsx useEffect)
+    // --- Loader Logic ---
     window.addEventListener('load', () => {
-        const loader = document.getElementById('loader');
-        setTimeout(() => {
-            loader.classList.add('fade-out');
-            document.body.style.overflow = '';
-            
-            // Trigger initial entrance
-            gsap.from("h1", { opacity: 0, y: 100, duration: 1.5, ease: "expo.out", delay: 0.5 });
-        }, 1000);
+        const tl = gsap.timeline();
+        tl.to(".loader-text", { opacity: 0, duration: 0.5, delay: 1 })
+          .to("#loader", { yPercent: -100, duration: 0.8, ease: "expo.inOut" })
+          .from(".hero-badge", { opacity: 0, y: 20, duration: 1 })
+          .from("h1", { opacity: 0, y: 50, duration: 1.2, stagger: 0.2 }, "-=0.8")
+          .from(".hero-sub", { opacity: 0, y: 20, duration: 1 }, "-=1");
     });
 
-    // Reveal Logic (From ScrollSection)
-    gsap.utils.toArray('.reveal').forEach(el => {
-        gsap.from(el, {
+    // --- Scroll Animations ---
+    const reveals = gsap.utils.toArray('.reveal');
+    reveals.forEach(el => {
+        gsap.to(el, {
             scrollTrigger: {
                 trigger: el,
-                start: "top 90%",
+                start: "top 85%",
                 toggleActions: "play none none none"
             },
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            ease: "power2.out"
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            ease: "expo.out"
         });
     });
+
+    // Initial state for reveals
+    gsap.set(".reveal", { opacity: 0, y: 40 });
 </script>
 
 </body>
