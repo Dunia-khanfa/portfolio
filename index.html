@@ -1,78 +1,219 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dunia Khanfa | Portfolio</title>
-    <link rel="stylesheet" href="index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        :root {
+            --bg: #000000;
+            --primary: #00d95a;
+            --text: #ffffff;
+            --text-dim: #888888;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.1;
+            overflow-x: hidden;
+        }
+
+        /* --- Loader Logic (From App.jsx) --- */
+        #loader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 10000;
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+        #loader.fade-out { opacity: 0; pointer-events: none; }
+        .loader-text { font-weight: 900; font-size: 2rem; letter-spacing: -2px; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+
+        /* --- Hero (From Hero.jsx) --- */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .hero-badge { color: var(--primary); font-weight: 700; letter-spacing: 3px; font-size: 0.8rem; margin-bottom: 20px; text-transform: uppercase; }
+        h1 { font-size: clamp(4rem, 15vw, 10rem); font-weight: 900; letter-spacing: -0.05em; line-height: 0.85; }
+        .hero-sub { color: var(--text-dim); font-size: 1.5rem; margin-top: 30px; max-width: 600px; line-height: 1.4; }
+
+        /* --- Stats Row --- */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin: 100px 0;
+        }
+        .stat-item { padding: 60px 40px; border-right: 1px solid var(--border); }
+        .stat-item span { font-size: 4rem; font-weight: 900; display: block; }
+        .stat-item label { color: var(--text-dim); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; font-weight: 700; }
+
+        /* --- ScrollSection (From ScrollSection.jsx) --- */
+        .scroll-section {
+            padding: 120px 0;
+            border-top: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .section-info h2 { font-size: 0.8rem; color: var(--primary); text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; }
+        .section-info h3 { font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; margin-bottom: 20px; }
+        .section-info p { color: var(--text-dim); font-size: 1.2rem; line-height: 1.4; margin-bottom: 30px; max-width: 500px; }
+        .project-link { color: #fff; text-decoration: none; font-weight: 900; border-bottom: 2px solid var(--primary); padding-bottom: 5px; }
+
+        .section-visual {
+            background: #0a0a0a;
+            height: 500px;
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .section-visual img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
+        .scroll-section:hover .section-visual img { opacity: 1; transform: scale(1.05); }
+
+        /* --- Certs & Footer --- */
+        .certs { padding: 100px 0; display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
+        .cert-box { background: #fff; padding: 20px; height: 80px; min-width: 160px; display: flex; align-items: center; justify-content: center; border-radius: 4px; filter: grayscale(1); transition: 0.3s; }
+        .cert-box:hover { filter: grayscale(0); transform: translateY(-5px); }
+        .cert-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+        footer { padding: 100px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 0.9rem; }
+
+        @media (max-width: 900px) {
+            .scroll-section { grid-template-columns: 1fr; padding: 60px 0; }
+            .section-visual { height: 300px; }
+            h1 { font-size: 4rem; }
+        }
+    </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="nav-logo">Dunia Khanfa</a>
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </div>
-    </nav>
+<div id="loader">
+    <div class="loader-text">DUNIA KHANFA</div>
+</div>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <p id="typewriter" class="degree-info"></p>
-            
-            <div class="dots-separator">
-                <span class="dot"></span>
-                <span class="dot active"></span>
-            </div>
+<div class="container">
+    <header>
+        <div class="hero-badge reveal">Information Systems Specialist</div>
+        <h1 class="reveal">CRAFTING<br>STRATEGIC<br>DATA</h1>
+        <p class="hero-sub reveal">Dunia Khanfa. GPA 91.2. Specialized in SAP implementation and high-performance data analytics.</p>
+    </header>
 
-            <div class="image-container">
-                <img src="profile.jpg" alt="Dunia Khanfa" class="profile-pic">
-            </div>
-
-            <h1 class="main-title">Dunia Khanfa</h1>
-            <h2 class="sub-title">Information Systems Specialist & Data Analyst</h2>
-            <p class="description">Crafting strategic solutions through data.</p>
-            
-            <div class="cta-buttons">
-                <a href="#projects" class="btn primary">View Projects</a>
-                <a href="#contact" class="btn secondary">Contact Me</a>
-            </div>
-        </div>
+    <section class="stats-row">
+        <div class="stat-item reveal"><span>100</span><label>Data Science</label></div>
+        <div class="stat-item reveal"><span>92</span><label>SQL Mastery</label></div>
+        <div class="stat-item reveal"><span>92</span><label>Java</label></div>
+        <div class="stat-item reveal"><span>83</span><label>Python</label></div>
     </section>
 
-    <section id="projects" class="projects-section">
-        <div class="section-container">
-            <h2 class="section-title">Selected Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="card-content">
-                        <h3>SAP Implementation</h3>
-                        <p>Leading SAP implementation at Sheba Medical Center to optimize logistics processes.</p>
-                        <a href="#" class="project-link">Learn More ←</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="card-content">
-                        <h3>Data Analysis - Greenpeace</h3>
-                        <p>Data analysis and automation for identifying trends and campaign optimization.</p>
-                        <a href="#" class="project-link">Learn More ←</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="card-content">
-                        <h3>SQL Database Design</h3>
-                        <p>Design and deployment of complex RDBMS for inventory and customer management.</p>
-                        <a href="#" class="project-link">Learn More ←</a>
-                    </div>
-                </div>
-            </div>
+    <div class="scroll-section reveal">
+        <div class="section-info">
+            <h2>Project 01</h2>
+            <h3>SAP Strategic Analytics</h3>
+            <p>Advanced decision-support system designed for SAP MM and Supply Chain Analytics for Matrix.</p>
+            <a href="https://github.com/Dunia-khanfa/SAP-Procurement-Strategic-Analytics.git" class="project-link" target="_blank">View GitHub</a>
         </div>
+        <div class="section-visual">
+            <img src="image_3.png" alt="Dunia at conference">
+        </div>
+    </div>
+
+    <div class="scroll-section reveal">
+        <div class="section-info">
+            <h2>Project 02</h2>
+            <h3>Healthcare Analytics</h3>
+            <p>Behavioral data analysis using Python to optimize scheduling and operational efficiency.</p>
+            <a href="https://github.com/Dunia-khanfa/Healthcare-Operations-Patient-No-Show-Analytics.git" class="project-link" target="_blank">View GitHub</a>
+        </div>
+        <div class="section-visual">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1000" alt="Healthcare">
+        </div>
+    </div>
+
+    <div class="scroll-section reveal">
+        <div class="section-info">
+            <h2>Project 03</h2>
+            <h3>Payments Dashboard</h3>
+            <p>Power BI ecosystem for financial KPI tracking and demographic spend analysis.</p>
+            <a href="https://github.com/Dunia-khanfa/Customer-Payments-Dashboard" class="project-link" target="_blank">View Dashboard</a>
+        </div>
+        <div class="section-visual">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000" alt="Dashboard">
+        </div>
+    </div>
+
+    <div class="scroll-section reveal">
+        <div class="section-info">
+            <h2>Project 04</h2>
+            <h3>Order Analytics (SQL)</h3>
+            <p>MySQL relational database designed for revenue tracking and business intelligence.</p>
+            <a href="https://github.com/Dunia-khanfa/Order-Analytics-System" class="project-link" target="_blank">View Database</a>
+        </div>
+        <div class="section-visual">
+            <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=1000" alt="SQL">
+        </div>
+    </div>
+
+    <section class="certs reveal">
+        <div class="cert-box"><img src="https://upload.wikimedia.org/wikipedia/commons/3/39/FreeCodeCamp_logo.png" alt="fCC"></div>
+        <div class="cert-box"><img src="https://www.vectorlogo.zone/logos/udemy/udemy-ar21.svg" alt="Udemy"></div>
+        <div class="cert-box"><img src="https://www.vectorlogo.zone/logos/google_analytics/google_analytics-ar21.svg" alt="Google"></div>
+        <div class="cert-box" style="background: #217346; color: white; font-weight: 900; font-size: 0.8rem;">EXCEL PRO</div>
     </section>
 
-    <script src="script.js"></script>
+    <footer>
+        <p>DUNIA KHANFA — duniakhanfa@gmail.com — 054-2099827</p>
+        <p style="margin-top: 10px; opacity: 0.5;">© 2026 Dunia Khanfa</p>
+    </footer>
+</div>
+
+<script>
+    // GSAP Registration
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Loader Dismiss (From App.jsx useEffect)
+    window.addEventListener('load', () => {
+        const loader = document.getElementById('loader');
+        setTimeout(() => {
+            loader.classList.add('fade-out');
+            document.body.style.overflow = '';
+            
+            // Trigger initial entrance
+            gsap.from("h1", { opacity: 0, y: 100, duration: 1.5, ease: "expo.out", delay: 0.5 });
+        }, 1000);
+    });
+
+    // Reveal Logic (From ScrollSection)
+    gsap.utils.toArray('.reveal').forEach(el => {
+        gsap.from(el, {
+            scrollTrigger: {
+                trigger: el,
+                start: "top 90%",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: "power2.out"
+        });
+    });
+</script>
+
 </body>
 </html>
