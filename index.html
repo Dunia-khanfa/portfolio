@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dunia Khanfa | Data Systems & Strategy</title>
+    <title>Dunia Khanfa | Systems & Strategy</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
@@ -32,90 +31,67 @@
             overflow-x: hidden;
         }
 
-        /* --- Magic Cursor JS --- */
         #cursor { position: fixed; width: 8px; height: 8px; background: var(--primary); border-radius: 50%; pointer-events: none; z-index: 10001; }
-        #cursor-follower { position: fixed; width: 40px; height: 40px; border: 1px solid var(--primary); border-radius: 50%; pointer-events: none; z-index: 10000; transition: transform 0.15s var(--ease); }
+        #cursor-follower { position: fixed; width: 35px; height: 35px; border: 1px solid var(--primary); border-radius: 50%; pointer-events: none; z-index: 10000; transition: transform 0.1s ease; }
 
-        /* --- Loader --- */
-        #loader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000; z-index: 10002;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .loader-text { font-weight: 900; font-size: 2.5rem; color: var(--primary); letter-spacing: -2px; }
+        #canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.3; }
 
-        /* --- Navigation --- */
+        #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 10002; display: flex; align-items: center; justify-content: center; }
+        .loader-text { font-weight: 900; font-size: 2rem; color: var(--primary); opacity: 0; }
+
         nav {
-            position: fixed; top: 0; width: 100%; padding: 30px 60px;
+            position: fixed; top: 0; width: 100%; padding: 25px 60px;
             display: flex; justify-content: space-between; align-items: center;
             z-index: 999; backdrop-filter: var(--glass); border-bottom: 1px solid var(--border);
         }
-        .logo { font-weight: 900; font-size: 1.2rem; color: var(--primary); }
-        .nav-links { display: flex; }
-        .nav-links a {
-            color: var(--text); text-decoration: none; font-size: 0.75rem;
-            text-transform: uppercase; letter-spacing: 3px; font-weight: 700;
-            margin-left: 40px; transition: 0.3s; opacity: 0.5;
-        }
+        .logo { font-weight: 900; font-size: 1.1rem; color: var(--primary); }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 600; margin-left: 40px; opacity: 0.5; transition: 0.3s; }
         .nav-links a:hover { opacity: 1; color: var(--primary); }
 
         .container { max-width: 1600px; margin: 0 auto; padding: 0 80px; }
 
-        /* --- Hero (No Image) --- */
-        header { height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; }
-        .hero-badge { color: var(--primary); font-weight: 700; letter-spacing: 5px; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 20px; display: block; }
-        h1 { font-size: clamp(3rem, 14vw, 10rem); font-weight: 900; letter-spacing: -0.07em; line-height: 0.8; margin-bottom: 40px; }
-        .hero-sub { color: var(--text-dim); font-size: clamp(1rem, 2vw, 1.8rem); max-width: 850px; line-height: 1.3; font-weight: 300; }
-
-        /* --- Experience Grid (Typography Only) --- */
-        .experience-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 150px 0;
+        header { height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+        .hero-top { display: flex; align-items: center; gap: 25px; margin-bottom: 30px; }
+        .hero-portrait { 
+            width: 100px; height: 100px; border-radius: 50%; overflow: hidden; 
+            border: 2px solid var(--primary); transform: scale(0);
+            box-shadow: 0 0 30px rgba(0, 217, 90, 0.2);
         }
-        .exp-item { background: var(--bg); padding: 90px 60px; transition: 0.6s var(--ease); position: relative; }
-        .exp-item:hover { background: #080808; }
-        .exp-item label { color: var(--primary); text-transform: uppercase; font-size: 0.6rem; letter-spacing: 4px; font-weight: 800; display: block; margin-bottom: 20px; }
-        .exp-item p { font-size: 1.6rem; font-weight: 600; }
-
-        /* --- Projects (Typography Only) --- */
-        .section-label { font-size: 4rem; font-weight: 900; margin-bottom: 80px; letter-spacing: -3px; }
+        .hero-portrait img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-badge { color: var(--primary); font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; }
         
-        .project-block {
-            display: flex; flex-direction: column; gap: 30px;
-            padding: 100px 0; border-top: 1px solid var(--border);
-        }
-        .project-content h3 { font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; margin-bottom: 15px; letter-spacing: -2px; }
-        .project-content p { color: var(--text-dim); font-size: 1.2rem; line-height: 1.4; margin-bottom: 30px; font-weight: 300; }
-        
-        .btn-link {
-            color: #fff; text-decoration: none; font-weight: 700; font-size: 0.8rem;
-            text-transform: uppercase; letter-spacing: 3px; border: 1px solid var(--border);
-            padding: 18px 40px; border-radius: 100px; transition: 0.4s var(--ease);
-            display: inline-block;
-        }
-        .btn-link:hover { background: var(--primary); color: #000; transform: scale(1.05); }
+        h1 { font-size: clamp(3rem, 14vw, 9rem); font-weight: 900; letter-spacing: -0.05em; line-height: 0.8; margin-bottom: 30px; }
+        .hero-sub { color: var(--text-dim); font-size: clamp(1rem, 2vw, 1.5rem); max-width: 800px; line-height: 1.3; font-weight: 300; }
 
-        /* --- Certs (Typography Only) --- */
-        .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin: 100px 0; justify-content: center; }
-        .cert-card {
-            background: var(--bg); border: 1px solid var(--border); padding: 40px; height: auto;
-            border-radius: 2px; transition: 0.5s var(--ease); text-decoration: none;
-            text-align: center;
-        }
-        .cert-card:hover { border-color: var(--primary); transform: translateY(-10px); }
-        .cert-card span { font-size: 1rem; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 2px; }
-        .cert-card p { font-size: 0.8rem; color: var(--text-dim); margin-top: 10px; font-weight: 300; }
+        .experience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 120px 0; }
+        .exp-item { background: var(--bg); padding: 70px 50px; transition: 0.5s; }
+        .exp-item label { color: var(--primary); font-size: 0.65rem; font-weight: 800; display: block; margin-bottom: 15px; letter-spacing: 2px; text-transform: uppercase; }
+        .exp-item p { font-size: 1.4rem; font-weight: 600; text-transform: none; }
 
-        /* --- Contact --- */
-        footer { padding: 150px 0; border-top: 1px solid var(--border); text-align: center; }
-        .contact-links { display: flex; flex-wrap: wrap; gap: 50px; justify-content: center; margin-top: 60px; }
-        .contact-links a { color: var(--text); text-decoration: none; font-size: 1.2rem; font-weight: 700; border-bottom: 2px solid var(--border); padding-bottom: 10px; transition: 0.3s; }
-        .contact-links a:hover { color: var(--primary); border-color: var(--primary); }
+        .section-label { font-size: 3rem; font-weight: 900; margin-bottom: 60px; letter-spacing: -2px; }
+        .project-block { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; padding: 100px 0; border-top: 1px solid var(--border); }
+        .project-content h3 { font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; margin-bottom: 25px; letter-spacing: -2px; }
+        .project-content p { color: var(--text-dim); font-size: 1.2rem; line-height: 1.4; margin-bottom: 40px; font-weight: 300; }
+        .btn-link { color: #fff; text-decoration: none; font-weight: 700; font-size: 0.8rem; border: 1px solid var(--border); padding: 15px 35px; border-radius: 100px; transition: 0.4s; }
+        .btn-link:hover { background: var(--primary); color: #000; }
+
+        .project-visual { height: 450px; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+        .project-visual img { width: 100%; height: 100%; object-fit: cover; opacity: 0.3; transition: 1s; }
+        .project-block:hover .project-visual img { opacity: 0.8; transform: scale(1.05); }
+
+        .certs-grid { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin: 80px 0; }
+        .cert-card { background: #fff; padding: 25px; height: 100px; min-width: 180px; display: flex; align-items: center; justify-content: center; transition: 0.4s; filter: grayscale(1); }
+        .cert-card:hover { filter: grayscale(0); transform: translateY(-10px); }
+        .cert-card img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+        footer { padding: 100px 0; border-top: 1px solid var(--border); text-align: center; }
+        .contact-link { color: var(--text); text-decoration: none; font-size: 1rem; font-weight: 700; margin: 0 20px; transition: 0.3s; opacity: 0.6; }
+        .contact-link:hover { opacity: 1; color: var(--primary); }
 
         @media (max-width: 1100px) {
-            .project-block { padding: 80px 0; }
-            .container { padding: 0 40px; }
-            nav { padding: 20px 30px; }
+            .project-block { grid-template-columns: 1fr; padding: 80px 0; }
+            .container { padding: 0 30px; }
+            nav { padding: 20px; }
         }
 
         .reveal { opacity: 0; }
@@ -125,24 +101,26 @@
 
 <div id="cursor"></div>
 <div id="cursor-follower"></div>
+<canvas id="canvas"></canvas>
 
-<div id="loader">
-    <div class="loader-text">Dunia Khanfa</div>
-</div>
+<div id="loader"><div class="loader-text">Dunia Khanfa</div></div>
 
 <nav>
     <div class="logo">Dunia.K</div>
     <div class="nav-links">
         <a href="#hero">Intro</a>
         <a href="#projects">Projects</a>
-        <a href="#certs">Certificates</a>
+        <a href="#certs">Certs</a>
         <a href="#contact">Contact</a>
     </div>
 </nav>
 
 <div class="container">
     <header id="hero">
-        <span class="hero-badge reveal">Application Support Engineer @ Nayax</span>
+        <div class="hero-top">
+            <div class="hero-portrait"><img src="דוניה - ועידה.jpg" alt="Dunia"></div>
+            <div class="hero-badge">Application Support Engineer @ Nayax</div>
+        </div>
         <h1 id="typing-hero"></h1>
         <p class="hero-sub reveal">Crafting data-driven operational strategies. Specialized in SAP MM implementation, enterprise support, and strategic performance analytics.</p>
     </header>
@@ -153,107 +131,104 @@
             <p>Support Engineer at Nayax</p>
         </div>
         <div class="exp-item reveal">
-            <label>Previous Role</label>
-            <p>Data Analyst at Greenpeace</p>
+            <label>Internship</label>
+            <p>Data Analyst Intern at Greenpeace</p>
         </div>
         <div class="exp-item reveal">
             <label>Previous Role</label>
             <p>SAP MM Specialist</p>
         </div>
         <div class="exp-item reveal">
-            <label>Focus</label>
-            <p>Data Systems & Strategy</p>
+            <label>Education</label>
+            <p>B.Sc. Information Systems</p>
         </div>
     </section>
 
     <section id="projects">
         <h2 class="section-label reveal">Selected Projects</h2>
-        
+
         <div class="project-block reveal">
             <div class="project-content">
                 <h3>SAP Strategic Hub</h3>
-                <p>Advanced Material Management analytics developed for Sheba Medical Center during my role at Matrix. Optimizing supply chain through strategic data implementation.</p>
-                <a href="https://github.com/Dunia-khanfa/SAP-Procurement-Strategic-Analytics.git" class="btn-link" target="_blank">View GitHub ↗</a>
+                <p>Advanced Material Management analytics developed for Sheba Medical Center. Optimizing supply chain through strategic data implementation.</p>
+                <a href="https://github.com/Dunia-khanfa/SAP-Procurement-Strategic-Analytics.git" class="btn-link" target="_blank">GitHub ↗</a>
             </div>
+            <div class="project-visual"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000"></div>
         </div>
 
         <div class="project-block reveal">
             <div class="project-content">
-                <h3>Healthcare No-Show Engine</h3>
-                <p>Python-based predictive behavioral analysis to reduce patient no-shows and improve clinic operational efficiency.</p>
-                <a href="https://github.com/Dunia-khanfa/Healthcare-Operations-Patient-No-Show-Analytics.git" class="btn-link" target="_blank">View GitHub ↗</a>
+                <h3>Healthcare AI Engine</h3>
+                <p>Python-based predictive analysis to reduce patient no-shows and improve clinic efficiency.</p>
+                <a href="https://github.com/Dunia-khanfa/Healthcare-Operations-Patient-No-Show-Analytics.git" class="btn-link" target="_blank">GitHub ↗</a>
             </div>
-        </div>
-        
-        <div class="project-block reveal">
-            <div class="project-content">
-                <h3>Order Analytics System</h3>
-                <p>MySQL relational database architecture designed for business intelligence analytics and end-to-end revenue tracking.</p>
-                <a href="https://github.com/Dunia-khanfa/Order-Analytics-System" class="btn-link" target="_blank">View Database ↗</a>
-            </div>
+            <div class="project-visual"><img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1000"></div>
         </div>
     </section>
 
     <section id="certs">
-        <h2 class="section-label reveal" style="text-align: center;">Certificates</h2>
+        <h2 class="section-label reveal" style="text-align: center;">Certifications</h2>
         <div class="certs-grid reveal">
-            <a href="https://www.udemy.com/certificate/UC-812acd75-5a73-4bb0-ab01-ead33cb7d13f/" target="_blank" class="cert-card">
-                <span>UDEMY CERTIFIED</span>
-                <p>Enterprise Data Analysis</p>
-            </a>
-            <a href="https://skillshop.credential.net/ca189c5f-031e-4079-9c15-2ba7e949d980#acc.WU4YOGHl" target="_blank" class="cert-card">
-                <span>GOOGLE ANALYTICS</span>
-                <p>Skillshop Certified</p>
-            </a>
-            <a href="https://www.freecodecamp.org/certification/fcc-9e2d03a2-a194-42f3-8f1f-f4b341bafa38/data-analysis-with-python-v7" target="_blank" class="cert-card">
-                <span>FREECODECAMP</span>
-                <p>Data Analysis with Python</p>
-            </a>
-            <a href="#" class="cert-card" style="border-color: #217346;">
-                <span style="color:#217346;">EXCEL ADVANCED</span>
-                <p>Pro-Level Data Management</p>
-            </a>
+            <a href="https://www.udemy.com/certificate/UC-812acd75-5a73-4bb0-ab01-ead33cb7d13f/" target="_blank" class="cert-card"><img src="https://www.vectorlogo.zone/logos/udemy/udemy-ar21.svg"></a>
+            <a href="https://skillshop.credential.net/ca189c5f-031e-4079-9c15-2ba7e949d980#acc.WU4YOGHl" target="_blank" class="cert-card"><img src="https://www.vectorlogo.zone/logos/google_analytics/google_analytics-ar21.svg"></a>
+            <a href="#" class="cert-card" style="background: #217346; color: #fff; font-weight: 900;">Excel Advanced</a>
         </div>
     </section>
 
     <footer id="contact">
-        <h2 class="reveal">Connect.</h2>
-        <div class="contact-links reveal">
-            <a href="https://github.com/Dunia-khanfa" target="_blank">GitHub</a>
-            <a href="https://www.linkedin.com/in/duniakhanfa/" target="_blank">LinkedIn</a>
-            <a href="mailto:duniakhanfa@gmail.com">Email</a>
-            <a href="tel:+972542099827">054-2099827</a>
+        <div class="contact-links">
+            <a href="https://www.linkedin.com/in/duniakhanfa/" class="contact-link">LinkedIn</a>
+            <a href="https://github.com/Dunia-khanfa" class="contact-link">GitHub</a>
+            <a href="mailto:duniakhanfa@gmail.com" class="contact-link">Email</a>
         </div>
-        <p style="opacity: 0.2; margin-top: 80px; font-size: 0.7rem;">DUNIA KHANFA © 2026</p>
+        <p style="opacity: 0.3; margin-top: 30px; font-size: 0.8rem;">Dunia Khanfa © 2026</p>
     </footer>
 </div>
 
 <script>
     gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
-    // --- Cursor Magic JS ---
-    const cursor = document.getElementById('cursor');
-    const follower = document.getElementById('cursor-follower');
+    // Cursor Follower
     document.addEventListener('mousemove', (e) => {
-        gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0 });
-        gsap.to(follower, { x: e.clientX - 20, y: e.clientY - 20, duration: 0.3, ease: "power2.out" });
+        gsap.to("#cursor", { x: e.clientX, y: e.clientY, duration: 0 });
+        gsap.to("#cursor-follower", { x: e.clientX - 17, y: e.clientY - 17, duration: 0.2 });
     });
 
-    // --- Loader & Intro Timeline ---
+    // Background Animation
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    let particles = [];
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 1.5;
+            this.speedX = Math.random() * 0.5 - 0.25;
+            this.speedY = Math.random() * 0.5 - 0.25;
+        }
+        update() { this.x += this.speedX; this.y += this.speedY; if (this.x > canvas.width) this.x = 0; if (this.y > canvas.height) this.y = 0; }
+        draw() { ctx.fillStyle = 'white'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
+    }
+    for (let i = 0; i < 80; i++) particles.push(new Particle());
+    function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); }
+    animate();
+
+    // Intro Animation
     window.addEventListener('load', () => {
         const tl = gsap.timeline();
-        tl.to(".loader-text", { opacity: 1, duration: 0.8 })
-          .to("#loader", { yPercent: -100, duration: 1.2, ease: "expo.inOut", delay: 1 })
-          // Typing Animation Target for H1
-          .to("#typing-hero", { text: "Dunia Khanfa.<br>Systems & Data.", duration: 2.5, ease: "none" })
-          .from(".hero-badge", { opacity: 0, y: -20, duration: 1 }, "-=0.5");
+        tl.to(".loader-text", { opacity: 1, duration: 1 })
+          .to("#loader", { yPercent: -100, duration: 1.2, ease: "expo.inOut" })
+          .to(".hero-portrait", { scale: 1, duration: 1, ease: "back.out" }, "-=0.5")
+          .to("#typing-hero", { text: "Dunia Khanfa.", duration: 1.5, ease: "none" })
+          .to(".hero-sub", { opacity: 1, y: 0, duration: 1 }, "-=0.5");
     });
 
-    // --- Scroll Reveals (GSAP) ---
+    // Reveal on scroll
     gsap.utils.toArray('.reveal').forEach(el => {
-        gsap.fromTo(el, { opacity: 0, y: 50 }, {
+        gsap.fromTo(el, { opacity: 0, y: 30 }, {
             scrollTrigger: { trigger: el, start: "top 90%" },
-            opacity: 1, y: 0, duration: 1.5, ease: "expo.out"
+            opacity: 1, y: 0, duration: 1, ease: "power2.out"
         });
     });
 </script>
