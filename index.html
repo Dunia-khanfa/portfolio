@@ -1,319 +1,78 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dunia Khanfa | Portfolio</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-    <style>
-        :root {
-            --bg: #000000;
-            --text: #ffffff;
-            --text-dim: #888888;
-            --primary: #00d95a;
-            --card-bg: #0a0a0a;
-            --border: rgba(255, 255, 255, 0.1);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.4;
-            overflow-x: hidden;
-        }
-
-        /* Custom Cursor like modern portfolios */
-        #cursor {
-            width: 20px; height: 20px;
-            background: var(--primary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: difference;
-            transition: transform 0.1s ease;
-        }
-
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-
-        /* --- Header Section --- */
-        header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-right: 10%;
-        }
-
-        .hero-badge {
-            font-size: 0.9rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        h1 {
-            font-size: clamp(4rem, 15vw, 10rem);
-            font-weight: 900;
-            line-height: 0.85;
-            letter-spacing: -0.05em;
-        }
-
-        .hero-sub {
-            font-size: 1.5rem;
-            color: var(--text-dim);
-            margin-top: 30px;
-            max-width: 600px;
-        }
-
-        /* --- Stats Section --- */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1px;
-            background: var(--border);
-            border: 1px solid var(--border);
-            margin-bottom: 100px;
-        }
-
-        .stat-item {
-            background: var(--bg);
-            padding: 40px;
-            text-align: center;
-        }
-
-        .stat-item span {
-            font-size: 3rem;
-            font-weight: 900;
-            display: block;
-        }
-
-        .stat-item label {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* --- Projects Section (Yonatan Style) --- */
-        .projects-title {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            margin-bottom: 40px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-        }
-
-        .project-card {
-            border-top: 1px solid var(--border);
-            padding: 60px 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            transition: all 0.4s ease;
-        }
-
-        .project-card:hover {
-            padding-left: 20px;
-            padding-right: 20px;
-            background: #050505;
-        }
-
-        .project-info h3 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .project-info p {
-            color: var(--text-dim);
-            font-size: 1.1rem;
-            max-width: 500px;
-            margin-bottom: 30px;
-        }
-
-        .project-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-        }
-
-        .project-visual {
-            background: var(--card-bg);
-            border-radius: 10px;
-            height: 350px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .project-visual img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.6;
-            transition: 0.5s;
-        }
-
-        .project-card:hover .project-visual img {
-            opacity: 1;
-            transform: scale(1.05);
-        }
-
-        /* --- Certifications --- */
-        .certs {
-            padding: 100px 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-        }
-
-        .cert-box {
-            background: white;
-            padding: 20px;
-            height: 80px;
-            min-width: 160px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            filter: grayscale(1);
-            transition: 0.3s;
-            border-radius: 4px;
-        }
-
-        .cert-box:hover { filter: grayscale(0); transform: translateY(-5px); }
-        .cert-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
-
-        footer {
-            padding: 100px 0;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            color: var(--text-dim);
-        }
-
-        @media (max-width: 768px) {
-            .project-card { grid-template-columns: 1fr; }
-            h1 { font-size: 4rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div id="cursor"></div>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">Dunia Khanfa</a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-<div class="container">
-    <header>
-        <div class="hero-badge">B.Sc. Information Systems | GPA 91.2</div>
-        <h1 class="reveal">DUNIA<br>KHANFA</h1>
-        <p class="hero-sub reveal">Information Systems Specialist & Data Analyst. Crafting strategic solutions through data.</p>
-    </header>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <p id="typewriter" class="degree-info"></p>
+            
+            <div class="dots-separator">
+                <span class="dot"></span>
+                <span class="dot active"></span>
+            </div>
 
-    <section class="stats">
-        <div class="stat-item"><span>100</span><label>Data Science</label></div>
-        <div class="stat-item"><span>92</span><label>SQL Mastery</label></div>
-        <div class="stat-item"><span>92</span><label>Java</label></div>
-        <div class="stat-item"><span>83</span><label>Python</label></div>
+            <div class="image-container">
+                <img src="profile.jpg" alt="Dunia Khanfa" class="profile-pic">
+            </div>
+
+            <h1 class="main-title">Dunia Khanfa</h1>
+            <h2 class="sub-title">Information Systems Specialist & Data Analyst</h2>
+            <p class="description">Crafting strategic solutions through data.</p>
+            
+            <div class="cta-buttons">
+                <a href="#projects" class="btn primary">View Projects</a>
+                <a href="#contact" class="btn secondary">Contact Me</a>
+            </div>
+        </div>
     </section>
 
-    <h2 class="projects-title">Selected Projects</h2>
-
-    <div class="project-list">
-        <div class="project-card reveal">
-            <div class="project-info">
-                <h3>SAP Strategic Analytics</h3>
-                <p>Advanced decision-support system designed for SAP Materials Management (MM) and Supply Chain Analytics.</p>
-                <a href="https://github.com/Dunia-khanfa/SAP-Procurement-Strategic-Analytics.git" class="project-link">Explore Code ↗</a>
-            </div>
-            <div class="project-visual">
-                <img src="YOUR_CONFERENCE_IMAGE.jpg" alt="Presentation">
-            </div>
-        </div>
-
-        <div class="project-card reveal">
-            <div class="project-info">
-                <h3>Healthcare Analytics</h3>
-                <p>Python data analysis of patient behavior to improve operational efficiency in medical centers.</p>
-                <a href="https://github.com/Dunia-khanfa/Healthcare-Operations-Patient-No-Show-Analytics.git" class="project-link">Explore Code ↗</a>
-            </div>
-            <div class="project-visual">
-                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800" alt="Healthcare">
-            </div>
-        </div>
-
-        <div class="project-card reveal">
-            <div class="project-info">
-                <h3>Customer Payments Dashboard</h3>
-                <p>Power BI ecosystem for spend analysis and financial KPI tracking.</p>
-                <a href="https://github.com/Dunia-khanfa/Customer-Payments-Dashboard" class="project-link">Explore Dashboard ↗</a>
-            </div>
-            <div class="project-visual">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800" alt="Dashboard">
+    <section id="projects" class="projects-section">
+        <div class="section-container">
+            <h2 class="section-title">Selected Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="card-content">
+                        <h3>SAP Implementation</h3>
+                        <p>Leading SAP implementation at Sheba Medical Center to optimize logistics processes.</p>
+                        <a href="#" class="project-link">Learn More ←</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="card-content">
+                        <h3>Data Analysis - Greenpeace</h3>
+                        <p>Data analysis and automation for identifying trends and campaign optimization.</p>
+                        <a href="#" class="project-link">Learn More ←</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="card-content">
+                        <h3>SQL Database Design</h3>
+                        <p>Design and deployment of complex RDBMS for inventory and customer management.</p>
+                        <a href="#" class="project-link">Learn More ←</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-    <section class="certs reveal">
-        <div class="cert-box"><img src="https://upload.wikimedia.org/wikipedia/commons/3/39/FreeCodeCamp_logo.png" alt="fCC"></div>
-        <div class="cert-box"><img src="https://www.vectorlogo.zone/logos/udemy/udemy-ar21.svg" alt="Udemy"></div>
-        <div class="cert-box"><img src="https://www.vectorlogo.zone/logos/google_analytics/google_analytics-ar21.svg" alt="Google"></div>
-        <div class="cert-box" style="background: #217346; color: white; font-weight: 900; filter: none;">EXCEL PRO</div>
     </section>
 
-    <footer>
-        <p>DUNIA KHANFA © 2026</p>
-        <p>duniakhanfa@gmail.com | 054-2099827</p>
-    </footer>
-</div>
-
-<script>
-    // --- GSAP Animations ---
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Custom Cursor Logic
-    const cursor = document.getElementById('cursor');
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-    });
-
-    // Reveal elements on scroll (Yonatan Style)
-    gsap.utils.toArray('.reveal').forEach(el => {
-        gsap.from(el, {
-            scrollTrigger: {
-                trigger: el,
-                start: "top 85%",
-                toggleActions: "play none none none"
-            },
-            opacity: 0,
-            y: 50,
-            duration: 1.2,
-            ease: "power4.out"
-        });
-    });
-
-    // Animate H1 specifically
-    gsap.from("h1", {
-        opacity: 0,
-        x: -100,
-        duration: 1.5,
-        delay: 0.5,
-        ease: "power4.out"
-    });
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
