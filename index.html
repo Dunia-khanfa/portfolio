@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dunia Khanfa | Portfolio</title>
+    <title>Dunia Khanfa | Systems & Strategy</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -21,10 +21,7 @@
             --ease: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* סמן עכבר קסום */
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
-        #cursor { position: fixed; width: 8px; height: 8px; background: var(--primary); border-radius: 50%; pointer-events: none; z-index: 10001; }
-        #cursor-follower { position: fixed; width: 35px; height: 35px; border: 1px solid var(--primary); border-radius: 50%; pointer-events: none; z-index: 10000; transition: transform 0.1s ease; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -34,66 +31,123 @@
             overflow-x: hidden;
         }
 
-        #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 10002; display: flex; align-items: center; justify-content: center; }
-        .loader-text { font-weight: 900; font-size: 2rem; color: var(--primary); opacity: 0; }
+        /* --- Magic Cursor --- */
+        #cursor {
+            position: fixed; width: 10px; height: 10px; background: var(--primary);
+            border-radius: 50%; pointer-events: none; z-index: 10001;
+            transition: transform 0.1s ease;
+        }
+        #cursor-follower {
+            position: fixed; width: 40px; height: 40px; border: 1px solid var(--primary);
+            border-radius: 50%; pointer-events: none; z-index: 10000;
+            transition: transform 0.15s var(--ease), opacity 0.3s ease;
+        }
 
+        /* --- Background Particles --- */
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.3; }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+        /* --- Loader --- */
+        #loader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 10002;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .loader-text { font-weight: 900; font-size: 2rem; color: var(--primary); filter: blur(10px); opacity: 0; }
+
+        /* --- Navigation --- */
         nav {
-            position: fixed; top: 0; width: 100%; padding: 25px 60px;
+            position: fixed; top: 0; width: 100%; padding: 30px 60px;
             display: flex; justify-content: space-between; align-items: center;
-            z-index: 999; backdrop-filter: var(--glass); border-bottom: 1px solid var(--border);
+            z-index: 999; backdrop-filter: var(--glass);
+            border-bottom: 1px solid var(--border);
         }
         .logo { font-weight: 900; font-size: 1.1rem; color: var(--primary); }
-        .nav-links a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 600; margin-left: 40px; opacity: 0.5; transition: 0.3s; }
+        .nav-links a {
+            color: var(--text); text-decoration: none; font-size: 0.7rem;
+            text-transform: uppercase; letter-spacing: 3px; font-weight: 700;
+            margin-left: 40px; transition: 0.3s; opacity: 0.5;
+        }
         .nav-links a:hover { opacity: 1; color: var(--primary); }
 
         .container { max-width: 1600px; margin: 0 auto; padding: 0 80px; }
 
-        /* Hero - בלי אותיות גדולות בהכל */
+        /* --- Hero --- */
         header { height: 100vh; display: flex; flex-direction: column; justify-content: center; }
-        .hero-top { display: flex; align-items: center; gap: 25px; margin-bottom: 30px; }
-        .hero-portrait { 
-            width: 110px; height: 110px; border-radius: 50%; overflow: hidden; 
-            border: 2px solid var(--primary); transform: scale(0);
-            box-shadow: 0 0 30px rgba(0, 217, 90, 0.2);
+        .hero-top { display: flex; align-items: center; gap: 25px; margin-bottom: 40px; }
+        .hero-portrait {
+            width: 100px; height: 100px; border-radius: 50%; overflow: hidden;
+            border: 2px solid var(--primary); box-shadow: 0 0 40px rgba(0,217,90,0.2);
+            transform: scale(0);
         }
         .hero-portrait img { width: 100%; height: 100%; object-fit: cover; }
-        .hero-badge { color: var(--primary); font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; }
+        .hero-badge { color: var(--primary); font-weight: 700; letter-spacing: 5px; font-size: 0.7rem; text-transform: uppercase; }
         
-        h1 { font-size: clamp(3rem, 14vw, 9rem); font-weight: 900; letter-spacing: -0.05em; line-height: 0.8; margin-bottom: 30px; text-transform: none; }
-        .hero-sub { color: var(--text-dim); font-size: clamp(1rem, 2vw, 1.5rem); max-width: 850px; line-height: 1.3; font-weight: 300; text-transform: none; }
+        h1 { font-size: clamp(3rem, 14vw, 10rem); font-weight: 900; letter-spacing: -0.07em; line-height: 0.8; margin-bottom: 40px; }
+        .hero-sub { color: var(--text-dim); font-size: clamp(1rem, 2vw, 1.7rem); max-width: 850px; line-height: 1.3; font-weight: 300; }
 
-        /* Experience - אות ראשונה גדולה בלבד */
-        .experience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 120px 0; }
-        .exp-item { background: var(--bg); padding: 70px 50px; transition: 0.5s; }
-        .exp-item label { color: var(--primary); font-size: 0.7rem; font-weight: 800; display: block; margin-bottom: 15px; letter-spacing: 1px; }
-        .exp-item p { font-size: 1.4rem; font-weight: 600; text-transform: none; }
-
-        .section-label { font-size: 3rem; font-weight: 900; margin-bottom: 60px; letter-spacing: -2px; }
-
-        /* פרויקטים - נקי בלי תמונות רקע */
-        .project-block { display: flex; flex-direction: column; gap: 20px; padding: 80px 0; border-top: 1px solid var(--border); }
-        .project-content h3 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 15px; letter-spacing: -2px; text-transform: none; }
-        .project-content p { color: var(--text-dim); font-size: 1.2rem; line-height: 1.4; margin-bottom: 30px; font-weight: 300; text-transform: none; }
-        .btn-link { color: #fff; text-decoration: none; font-weight: 700; font-size: 0.85rem; border: 1px solid var(--border); padding: 15px 35px; border-radius: 100px; transition: 0.4s; display: inline-block; width: fit-content; }
-        .btn-link:hover { background: var(--primary); color: #000; border-color: var(--primary); }
-
-        /* תעודות - ממורכז */
-        .certs-container { padding: 100px 0; text-align: center; }
-        .certs-grid { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 50px; }
-        .cert-card { 
-            background: #fff; border: 1px solid var(--border); padding: 30px; height: auto;
-            min-width: 220px; border-radius: 8px; transition: 0.5s var(--ease); text-decoration: none;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        /* --- Experience Grid (Corrected Roles) --- */
+        .experience-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 150px 0;
         }
-        .cert-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 217, 90, 0.15); }
-        .cert-card span { font-size: 0.9rem; font-weight: 700; color: #000; text-align: center; }
-        .cert-card p { font-size: 0.75rem; color: #666; margin-top: 8px; }
+        .exp-item { background: var(--bg); padding: 90px 60px; transition: 0.6s var(--ease); overflow: hidden; position: relative; }
+        .exp-item:hover { background: #080808; }
+        .exp-item::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--primary); transform: scaleX(0); transition: 0.4s var(--ease); transform-origin: right; }
+        .exp-item:hover::after { transform: scaleX(1); transform-origin: left; }
+        
+        .exp-item label { color: var(--primary); text-transform: uppercase; font-size: 0.6rem; letter-spacing: 4px; font-weight: 800; display: block; margin-bottom: 20px; }
+        .exp-item p { font-size: 1.5rem; font-weight: 600; line-height: 1.1; }
 
-        footer { padding: 100px 0; border-top: 1px solid var(--border); text-align: center; }
-        .contact-link { color: var(--text); text-decoration: none; font-size: 1rem; font-weight: 700; margin: 0 20px; transition: 0.3s; opacity: 0.6; }
-        .contact-link:hover { opacity: 1; color: var(--primary); }
+        /* --- Projects --- */
+        .section-header { margin-bottom: 100px; }
+        .section-header h2 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; margin-bottom: 30px; letter-spacing: -3px; }
+
+        .project-block {
+            display: grid; grid-template-columns: 1.2fr 1fr; gap: 100px; align-items: center;
+            padding: 150px 0; border-top: 1px solid var(--border);
+        }
+        .project-content h3 { font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; margin-bottom: 30px; letter-spacing: -2px; }
+        .project-content p { color: var(--text-dim); font-size: 1.3rem; line-height: 1.4; margin-bottom: 50px; font-weight: 300; }
+        
+        .btn-link {
+            color: #fff; text-decoration: none; font-weight: 700; font-size: 0.8rem;
+            text-transform: uppercase; letter-spacing: 3px; border: 1px solid var(--border);
+            padding: 20px 45px; border-radius: 100px; transition: 0.4s var(--ease);
+            display: inline-block; background: transparent;
+        }
+        .btn-link:hover { background: var(--text); color: #000; transform: scale(1.05); }
+
+        .project-visual {
+            height: 500px; /* Reduced size */
+            border-radius: 2px; overflow: hidden;
+            border: 1px solid var(--border); position: relative;
+        }
+        .project-visual img { width: 100%; height: 110%; object-fit: cover; opacity: 0.2; transition: opacity 0.8s ease; }
+        .project-block:hover .project-visual img { opacity: 0.9; }
+
+        /* --- Certificates --- */
+        .certs-container { padding: 150px 0; text-align: center; }
+        .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 40px; justify-content: center; }
+        .cert-card {
+            background: #fff; padding: 40px; height: 140px; display: flex; align-items: center; justify-content: center;
+            transition: 0.5s var(--ease); filter: grayscale(1) invert(0.1); text-decoration: none;
+        }
+        .cert-card:hover { filter: grayscale(0) invert(0); transform: translateY(-15px); box-shadow: 0 40px 80px rgba(0,217,90,0.15); }
+        .cert-card img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+        /* --- Contact --- */
+        footer { padding: 150px 0; border-top: 1px solid var(--border); text-align: center; }
+        .contact-grid { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; margin: 60px 0; }
+        .contact-link { color: var(--text); text-decoration: none; font-size: 1.1rem; font-weight: 700; border-bottom: 1px solid var(--border); padding-bottom: 10px; transition: 0.3s; }
+        .contact-link:hover { color: var(--primary); border-color: var(--primary); }
 
         @media (max-width: 1100px) {
+            .project-block { grid-template-columns: 1fr; gap: 60px; padding: 100px 0; }
+            .project-visual { height: 350px; }
             .container { padding: 0 30px; }
             nav { padding: 20px 30px; }
         }
@@ -105,14 +159,17 @@
 
 <div id="cursor"></div>
 <div id="cursor-follower"></div>
+<canvas id="bg-canvas"></canvas>
 
-<div id="loader"><div class="loader-text">Dunia Khanfa</div></div>
+<div id="loader">
+    <div class="loader-text">Dunia Khanfa</div>
+</div>
 
 <nav>
     <div class="logo">Dunia.K</div>
     <div class="nav-links">
         <a href="#hero">Intro</a>
-        <a href="#projects">Projects</a>
+        <a href="#projects">Selected Projects</a>
         <a href="#certs">Certs</a>
         <a href="#contact">Contact</a>
     </div>
@@ -121,87 +178,88 @@
 <div class="container">
     <header id="hero">
         <div class="hero-top">
-            <div class="hero-portrait"><img src="דוניה - ועידה.jpg" alt="Dunia"></div>
-            <div class="hero-badge">Application Support Engineer at Nayax</div>
+            <div class="hero-portrait">
+                <img src="דוניה - ועידה.jpg" alt="Dunia Khanfa Presentation">
+            </div>
+            <div class="hero-badge">GPA 91.2 | Information Systems Specialist</div>
         </div>
         <h1 id="typing-hero"></h1>
-        <p class="hero-sub reveal">Crafting data-driven operational strategies. Specialized in SAP MM implementation, enterprise support, and strategic performance analytics.</p>
+        <p class="hero-sub reveal">Crafting data-driven operational strategies. Specialized in SAP implementation, cloud architecture, and data strategy.</p>
     </header>
 
     <section class="experience-grid">
         <div class="exp-item reveal">
             <label>Current Role</label>
-            <p>Support Engineer at Nayax</p>
+            <p>Application Support Engineer at Nayax</p>
         </div>
         <div class="exp-item reveal">
-            <label>Internship</label>
-            <p>Data Analyst Intern at Greenpeace</p>
+            <label>Expertise</label>
+            <p>Data Analyst at Greenpeace</p>
         </div>
         <div class="exp-item reveal">
             <label>Previous Role</label>
             <p>SAP MM Specialist</p>
         </div>
         <div class="exp-item reveal">
-            <label>Specialization</label>
-            <p>Data Systems & Strategy</p>
+            <label>Education</label>
+            <p>B.Sc. Information Systems</p>
         </div>
     </section>
 
     <section id="projects">
-        <h2 class="section-label reveal">Projects</h2>
+        <div class="section-header reveal"><h2>Selected Projects</h2></div>
 
         <div class="project-block reveal">
             <div class="project-content">
-                <h3>SAP Strategic Hub</h3>
-                <p>Advanced Material Management analytics developed for Sheba Medical Center. Optimizing supply chain through strategic data implementation.</p>
-                <a href="https://github.com/Dunia-khanfa/SAP-Procurement-Strategic-Analytics.git" class="btn-link" target="_blank">View GitHub ↗</a>
+                <h3>SAP Procurement Strategic Analytics</h3>
+                <p>Advanced decision-support hub for SAP Materials Management (MM) and supply chain workflows. Developed for Matrix to optimize governmental operational logistics at Sheba Medical Center.</p>
+                <a href="https://github.com/Dunia-khanfa/SAP-Procurement-Strategic-Analytics.git" class="btn-link" target="_blank">Repository ↗</a>
+            </div>
+            <div class="project-visual">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1500" alt="SAP Enterprise System">
             </div>
         </div>
 
         <div class="project-block reveal">
             <div class="project-content">
-                <h3>Healthcare AI Engine</h3>
-                <p>Python-based predictive analysis to reduce patient no-shows and improve clinic efficiency.</p>
-                <a href="https://github.com/Dunia-khanfa/Healthcare-Operations-Patient-No-Show-Analytics.git" class="btn-link" target="_blank">View GitHub ↗</a>
+                <h3>Healthcare No-Show Engine</h3>
+                <p>AI-driven behavioral analysis using Python to predict and reduce patient no-shows. Contributing to significant operational cost reduction in major medical centers.</p>
+                <a href="https://github.com/Dunia-khanfa/Healthcare-Operations-Patient-No-Show-Analytics.git" class="btn-link" target="_blank">Repository ↗</a>
+            </div>
+            <div class="project-visual">
+                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1500" alt="Healthcare Analytics AI">
             </div>
         </div>
 
         <div class="project-block reveal">
             <div class="project-content">
-                <h3>Customer Dashboard</h3>
-                <p>Power BI ecosystem for KPI tracking and financial spend analysis using complex datasets.</p>
-                <a href="https://github.com/Dunia-khanfa/Customer-Payments-Dashboard" class="btn-link" target="_blank">View GitHub ↗</a>
+                <h3>Customer Payments Dashboard</h3>
+                <p>Strategic Power BI ecosystem for demographic spend analysis and financial KPI tracking. Transforming complex datasets into actionable strategy.</p>
+                <a href="https://github.com/Dunia-khanfa/Customer-Payments-Dashboard" class="btn-link" target="_blank">Explore Dashboard ↗</a>
+            </div>
+            <div class="project-visual">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1500" alt="Dashboard">
             </div>
         </div>
 
         <div class="project-block reveal">
             <div class="project-content">
                 <h3>Order Analytics System</h3>
-                <p>MySQL relational database architecture for business intelligence and revenue tracking.</p>
-                <a href="https://github.com/Dunia-khanfa/Order-Analytics-System" class="btn-link" target="_blank">View GitHub ↗</a>
+                <p>Relational MySQL database architecture designed for business intelligence analytics and end-to-end revenue tracking.</p>
+                <a href="https://github.com/Dunia-khanfa/Order-Analytics-System" class="btn-link" target="_blank">Explore DB ↗</a>
+            </div>
+            <div class="project-visual">
+                <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=1000" alt="SQL Database">
             </div>
         </div>
     </section>
 
     <section id="certs" class="certs-container">
-        <h2 class="section-label reveal">Certifications</h2>
+        <div class="section-header reveal"><h2>Licenses & Certifications</h2></div>
         <div class="certs-grid reveal">
-            <a href="https://www.udemy.com/certificate/UC-812acd75-5a73-4bb0-ab01-ead33cb7d13f/" target="_blank" class="cert-card">
-                <span>Udemy Certified</span>
-                <p>Enterprise Data Analysis</p>
-            </a>
-            <a href="https://skillshop.credential.net/ca189c5f-031e-4079-9c15-2ba7e949d980#acc.WU4YOGHl" target="_blank" class="cert-card">
-                <span>Google Analytics</span>
-                <p>Skillshop Certified</p>
-            </a>
-            <a href="https://www.freecodecamp.org/certification/fcc-9e2d03a2-a194-42f3-8f1f-f4b341bafa38/data-analysis-with-python-v7" target="_blank" class="cert-card">
-                <span>freeCodeCamp</span>
-                <p>Data Analysis with Python</p>
-            </a>
-            <a href="https://courses.campus.gov.il/certificates/db08b24faeee4c2fa3df57f149ce4ca0" target="_blank" class="cert-card" style="border-bottom: 4px solid #217346;">
-                <span>Excel Advanced</span>
-                <p>Business Management</p>
-            </a>
+            <a href="https://www.udemy.com/certificate/UC-812acd75-5a73-4bb0-ab01-ead33cb7d13f/" target="_blank" class="cert-card"><img src="https://www.vectorlogo.zone/logos/udemy/udemy-ar21.svg"></a>
+            <a href="https://skillshop.credential.net/ca189c5f-031e-4079-9c15-2ba7e949d980#acc.WU4YOGHl" target="_blank" class="cert-card"><img src="https://www.vectorlogo.zone/logos/google_analytics/google_analytics-ar21.svg"></a>
+            <a href="#" class="cert-card" style="background: #217346; color: white; font-weight: 900; font-size: 0.9rem;">EXCEL ADVANCED</a>
         </div>
     </section>
 
@@ -218,29 +276,51 @@
 <script>
     gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
-    // סמן עכבר
+    // --- Cursor Follower ---
     document.addEventListener('mousemove', (e) => {
         gsap.to("#cursor", { x: e.clientX, y: e.clientY, duration: 0 });
         gsap.to("#cursor-follower", { x: e.clientX - 17, y: e.clientY - 17, duration: 0.2 });
     });
 
-    // אנימציית טעינה וכניסה
+    // --- Background Particles Animation ---
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    let particles = [];
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2;
+            this.speedX = Math.random() * 0.5 - 0.25;
+            this.speedY = Math.random() * 0.5 - 0.25;
+        }
+        update() { this.x += this.speedX; this.y += this.speedY; if (this.x > canvas.width) this.x = 0; if (this.y > canvas.height) this.y = 0; }
+        draw() { ctx.fillStyle = 'white'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
+    }
+    for (let i = 0; i < 80; i++) particles.push(new Particle());
+    function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); }
+    animate();
+
+    // --- Intro Animation ---
     window.addEventListener('load', () => {
         const tl = gsap.timeline();
-        tl.to(".loader-text", { opacity: 1, duration: 1 })
-          .to("#loader", { yPercent: -100, duration: 1.2, ease: "expo.inOut" })
-          .to(".hero-portrait", { scale: 1, duration: 1, ease: "back.out" }, "-=0.5")
-          .to("#typing-hero", { text: "Dunia Khanfa.", duration: 1.5, ease: "none" })
-          .to(".hero-sub", { opacity: 1, y: 0, duration: 1 }, "-=0.5");
+        tl.to(".loader-text", { opacity: 1, duration: 0.8 })
+          .to("#loader", { yPercent: -100, duration: 1, ease: "expo.inOut", delay: 1 })
+          .from(".hero-portrait", { opacity: 0, scale: 0.5, duration: 1.2, ease: "back.out(1.7)" })
+          // Typing Animation Target for H1
+          .to("#typing-hero", { text: "Designing<br>The Data<br>Strategy.", duration: 2.5, ease: "none" }, "-=0.5")
+          .from(".hero-sub", { opacity: 0, y: 20, duration: 1 }, "-=1");
     });
 
-    // חשיפה בגלילה
+    // --- Scroll Reveals ---
     gsap.utils.toArray('.reveal').forEach(el => {
         gsap.fromTo(el, { opacity: 0, y: 30 }, {
             scrollTrigger: { trigger: el, start: "top 90%" },
-            opacity: 1, y: 0, duration: 1, ease: "power2.out"
+            opacity: 1, y: 0, duration: 1.5, ease: "expo.out"
         });
     });
 </script>
+
 </body>
 </html>
