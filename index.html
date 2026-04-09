@@ -13,13 +13,12 @@
 
     <style>
         :root {
-            --bg: #020202;
+            --bg: #010101;
             --primary: #00d95a;
             --text: #ffffff;
-            --text-dim: #b0b0b0;
-            --card-bg: rgba(255, 255, 255, 0.02);
-            --border: rgba(255, 255, 255, 0.06);
-            --glass: blur(15px);
+            --text-dim: #a0a0a0;
+            --border: rgba(255, 255, 255, 0.08);
+            --glass: blur(12px);
             --ease: cubic-bezier(0.23, 1, 0.32, 1);
         }
 
@@ -34,36 +33,30 @@
             letter-spacing: -0.01em;
         }
 
-        /* --- Canvas Background (The "Magic") --- */
-        #particles-js {
-            position: fixed; width: 100%; height: 100%;
-            top: 0; left: 0; z-index: -1;
-            opacity: 0.4;
-        }
-
         /* --- Custom Scrollbar --- */
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #000; }
         ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
 
-        /* --- Loader --- */
+        /* --- Loader (Based on App.jsx) --- */
         #loader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; z-index: 10000;
             display: flex; align-items: center; justify-content: center;
         }
-        .loader-text { font-weight: 900; font-size: 2rem; letter-spacing: -2px; color: var(--primary); opacity: 0; }
+        .loader-text { font-weight: 900; font-size: 2.2rem; letter-spacing: -2px; color: var(--primary); opacity: 0; }
 
         /* --- Navigation --- */
         nav {
-            position: fixed; top: 0; width: 100%; padding: 20px 60px;
+            position: fixed; top: 0; width: 100%; padding: 25px 60px;
             display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; background: rgba(0,0,0,0.3); backdrop-filter: var(--glass);
+            z-index: 1000; background: rgba(0,0,0,0.4); backdrop-filter: var(--glass);
             border-bottom: 1px solid var(--border);
+            opacity: 0;
         }
-        .logo { font-weight: 900; font-size: 1.1rem; color: var(--primary); letter-spacing: -1px; }
+        .logo { font-weight: 900; font-size: 1.2rem; color: var(--primary); letter-spacing: -1px; }
         .nav-links a {
-            color: var(--text); text-decoration: none; font-size: 0.75rem;
+            color: var(--text); text-decoration: none; font-size: 0.8rem;
             text-transform: uppercase; letter-spacing: 2px; font-weight: 600;
             margin-left: 35px; transition: 0.3s; opacity: 0.7;
         }
@@ -74,53 +67,52 @@
         /* --- Hero --- */
         header { height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; }
         
-        .hero-top { display: flex; align-items: center; gap: 30px; margin-bottom: 30px; }
+        .hero-top { display: flex; align-items: center; gap: 30px; margin-bottom: 35px; opacity: 0; }
         .hero-portrait {
-            width: 120px; height: 120px;
+            width: 130px; height: 130px;
             border-radius: 50%;
             overflow: hidden;
-            border: 2px solid var(--primary);
+            border: 3px solid var(--primary);
             box-shadow: 0 0 30px rgba(0,217,90,0.3);
-            opacity: 0;
         }
         .hero-portrait img { width: 100%; height: 100%; object-fit: cover; }
-        .hero-badge { color: var(--primary); font-weight: 700; letter-spacing: 4px; font-size: 0.75rem; text-transform: uppercase; opacity: 0; }
+        .hero-badge { color: var(--primary); font-weight: 700; letter-spacing: 4px; font-size: 0.8rem; text-transform: uppercase; }
         
-        h1 { font-size: clamp(3.5rem, 12vw, 9rem); font-weight: 900; letter-spacing: -0.07em; line-height: 0.85; margin-bottom: 35px; }
+        h1 { font-size: clamp(3.5rem, 12vw, 9.5rem); font-weight: 900; letter-spacing: -0.07em; line-height: 0.85; margin-bottom: 35px; }
         
-        .hero-sub { color: var(--text-dim); font-size: clamp(1rem, 2vw, 1.6rem); max-width: 750px; line-height: 1.4; font-weight: 300; opacity: 0; }
+        .hero-sub { color: var(--text-dim); font-size: clamp(1.2rem, 3vw, 1.8rem); max-width: 800px; line-height: 1.4; font-weight: 300; opacity: 0; }
 
-        /* --- Stats Grid --- */
-        .stats-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        /* --- Stats/Experience Row (Upgraded) --- */
+        .experience-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 150px 0;
         }
-        .stat-item { background: var(--bg); padding: 80px 50px; transition: 0.5s var(--ease); }
-        .stat-item:hover { background: #050505; transform: scale(1.02); }
-        .stat-item span { font-size: 6rem; font-weight: 900; display: block; line-height: 1; color: var(--text); letter-spacing: -5px; }
-        .stat-item label { color: var(--primary); text-transform: uppercase; font-size: 0.65rem; letter-spacing: 3px; font-weight: 700; margin-top: 15px; display: block; }
+        .exp-item { background: var(--bg); padding: 80px 50px; transition: 0.5s var(--ease); }
+        .exp-item:hover { background: #050505; transform: scale(1.02); }
+        .exp-item label { color: var(--primary); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 3px; font-weight: 700; display: block; margin-bottom: 15px; }
+        .exp-item p { font-size: 1.6rem; font-weight: 600; line-height: 1.2; color: var(--text); }
 
         /* --- Projects Sections --- */
-        .section-header { margin-bottom: 90px; }
-        .section-header h2 { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 7px; font-weight: 700; }
+        .section-header { margin-bottom: 100px; }
+        .section-header h2 { font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 7px; font-weight: 700; }
 
         .project-block {
             display: grid; grid-template-columns: 1.2fr 1fr; gap: 90px; align-items: center;
-            padding: 110px 0; border-top: 1px solid var(--border);
+            padding: 120px 0; border-top: 1px solid var(--border);
         }
-        .project-content h3 { font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; margin-bottom: 25px; letter-spacing: -3px; line-height: 0.9; }
-        .project-content p { color: var(--text-dim); font-size: 1.2rem; line-height: 1.5; margin-bottom: 45px; max-width: 580px; font-weight: 300; }
+        .project-content h3 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; margin-bottom: 25px; letter-spacing: -3px; line-height: 0.9; }
+        .project-content p { color: var(--text-dim); font-size: 1.3rem; line-height: 1.5; margin-bottom: 45px; max-width: 600px; font-weight: 300; }
         
         .btn-link {
-            color: #fff; text-decoration: none; font-weight: 700; font-size: 0.8rem;
+            color: #fff; text-decoration: none; font-weight: 700; font-size: 0.85rem;
             text-transform: uppercase; letter-spacing: 2px; border: 1px solid var(--border);
-            padding: 18px 35px; border-radius: 50px; transition: 0.4s var(--ease);
+            padding: 18px 40px; border-radius: 50px; transition: 0.4s var(--ease);
             display: inline-block;
         }
-        .btn-link:hover { background: var(--primary); color: #000; border-color: var(--primary); transform: translateY(-3px); }
+        .btn-link:hover { background: var(--primary); color: #000; border-color: var(--primary); transform: translateY(-5px); }
 
         .project-visual {
-            background: #050505; height: 580px; border-radius: 4px; overflow: hidden;
+            background: #050505; height: 600px; border-radius: 4px; overflow: hidden;
             border: 1px solid var(--border); position: relative;
         }
         .project-visual img { width: 100%; height: 100%; object-fit: cover; opacity: 0.3; transition: 1.5s var(--ease); }
@@ -128,37 +120,35 @@
 
         /* --- Certificates --- */
         .certs-container { padding: 150px 0; text-align: center; }
-        .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 35px; margin-top: 60px; }
+        .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 40px; margin-top: 70px; }
         .cert-card {
-            background: #fff; padding: 35px; height: 130px; display: flex; align-items: center; justify-content: center;
+            background: #fff; padding: 40px; height: 140px; display: flex; align-items: center; justify-content: center;
             border-radius: 4px; transition: 0.5s var(--ease); filter: grayscale(1); text-decoration: none; border: 1px solid transparent;
         }
-        .cert-card:hover { filter: grayscale(0); transform: translateY(-12px) scale(1.03); box-shadow: 0 25px 50px rgba(0,217,90,0.25); border-color: var(--primary); }
+        .cert-card:hover { filter: grayscale(0); transform: translateY(-15px) scale(1.03); box-shadow: 0 30px 60px rgba(0,217,90,0.3); border-color: var(--primary); }
         .cert-card img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-        footer { padding: 110px 0; border-top: 1px solid var(--border); text-align: center; opacity: 0.4; font-size: 0.75rem; letter-spacing: 1px; font-weight: 300; }
+        footer { padding: 120px 0; border-top: 1px solid var(--border); text-align: center; opacity: 0.4; font-size: 0.8rem; letter-spacing: 1px; font-weight: 300; }
 
         @media (max-width: 1100px) {
-            .project-block { grid-template-columns: 1fr; gap: 50px; padding: 70px 0; }
-            .project-visual { height: 350px; }
-            nav { padding: 20px 30px; }
+            .project-block { grid-template-columns: 1fr; gap: 50px; padding: 80px 0; }
+            .project-visual { height: 400px; }
+            nav { padding: 25px 40px; }
             .nav-links { display: none; }
             h1 { font-size: 4rem; }
             .hero-top { flex-direction: column; align-items: flex-start; gap: 15px; }
         }
 
-        .reveal { opacity: 0; y: 40px; }
+        .reveal { opacity: 0; y: 50px; }
     </style>
 </head>
 <body>
-
-<div id="particles-js"></div>
 
 <div id="loader">
     <div class="loader-text">Dunia Khanfa</div>
 </div>
 
-<nav>
+<nav id="navbar">
     <div class="logo">D.Khanfa</div>
     <div class="nav-links">
         <a href="#hero">Intro</a>
@@ -172,21 +162,33 @@
     <section id="hero">
         <div class="hero-top">
             <div class="hero-portrait">
-                <img src="image_3.png" alt="Dunia Khanfa">
+                <img src="image_0.png" alt="Dunia Khanfa Presentation">
             </div>
             <div class="hero-badge">B.Sc. Information Systems Specialist</div>
         </div>
         
         <h1 id="typing-hero"></h1>
         
-        <p class="hero-sub">Dunia Khanfa. GPA 91.2. Former Full Stack Engineer at Jooba AI. Specialized in SAP MM implementation, cloud architecture (K8s), and strategic healthcare data analytics.</p>
+        <p class="hero-sub">Dunia Khanfa. Specialist in SAP implementation, cloud architecture, and data strategy. Crafting стратегические решения through high-performance analytics.</p>
     </section>
 
-    <section class="stats-grid">
-        <div class="stat-item reveal"><span>100</span><label>Data Science</label></div>
-        <div class="stat-item reveal"><span>92</span><label>SQL Mastery</label></div>
-        <div class="stat-item reveal"><span>92</span><label>Java Expert</label></div>
-        <div class="stat-item reveal"><span>83</span><label>Python Dev</label></div>
+    <section class="experience-grid">
+        <div class="exp-item reveal">
+            <label>Key Skill</label>
+            <p>SAP MM Specialist</p>
+        </div>
+        <div class="exp-item reveal">
+            <label>Current Role</label>
+            <p>Application Support Engineer at Nayax</p>
+        </div>
+        <div class="exp-item reveal">
+            <label>Previous Role</label>
+            <p>Data Analyst at Greenpeace</p>
+        </div>
+        <div class="exp-item reveal">
+            <label>Focus</label>
+            <p>Data-Driven Strategy</p>
+        </div>
     </section>
 
     <section id="projects">
@@ -196,45 +198,45 @@
 
         <div class="project-block reveal">
             <div class="project-content">
-                <h3>SAP Procurement Analytics</h3>
-                <p>Advanced decision-support hub for SAP Materials Management (MM) and Supply Chain workflows. Developed for Matrix to optimize governmental operational logistics.</p>
+                <h3>SAP Procurement Strategic Analytics</h3>
+                <p>Advanced decision-support hub for SAP Materials Management (MM) and supply chain analytics. Developed for Matrix to optimize governmental operational logistics at Sheba.</p>
                 <a href="https://github.com/Dunia-khanfa/SAP-Procurement-Strategic-Analytics.git" class="btn-link" target="_blank">Repository ↗</a>
             </div>
             <div class="project-visual">
-                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1500" alt="SAP Enterprise">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1500" alt="SAP MM Enterprise">
             </div>
         </div>
 
         <div class="project-block reveal">
             <div class="project-content">
                 <h3>Healthcare No-Show Engine</h3>
-                <p>AI-driven behavioral analysis using Python to predict and reduce patient no-shows. Contributed to significant operational cost reduction in medical facilities.</p>
+                <p>Behavioral data analysis using Python to predict and reduce patient no-shows. Contributing to significant operational cost reduction in major medical centers.</p>
                 <a href="https://github.com/Dunia-khanfa/Healthcare-Operations-Patient-No-Show-Analytics.git" class="btn-link" target="_blank">Repository ↗</a>
             </div>
             <div class="project-visual">
-                <img src="https://images.unsplash.com/photo-1532187863486-abf91ad1b260?q=80&w=1500" alt="Healthcare AI">
+                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1500" alt="Healthcare Analytics AI">
             </div>
         </div>
 
         <div class="project-block reveal">
             <div class="project-content">
-                <h3>Customer Payments Dashboard</h3>
-                <p>Comprehensive Power BI ecosystem for financial KPI tracking and demographic spend analysis. Visualizing complex datasets for strategic insight.</p>
-                <a href="https://github.com/Dunia-khanfa/Customer-Payments-Dashboard" class="btn-link" target="_blank">Live View ↗</a>
+                <h3>Payments Dashboard</h3>
+                <p>Complete Power BI ecosystem for financial KPI tracking and demographic spend analysis. Turning complex datasets into actionable strategy.</p>
+                <a href="https://github.com/Dunia-khanfa/Customer-Payments-Dashboard" class="btn-link" target="_blank">View Dashboard ↗</a>
             </div>
             <div class="project-visual">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1500" alt="Dashboard">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1500" alt="Power BI Dashboard">
             </div>
         </div>
 
         <div class="project-block reveal">
             <div class="project-content">
                 <h3>Order Analytics System</h3>
-                <p>Relational MySQL database architecture designed for end-to-end revenue tracking and business intelligence analytics.</p>
+                <p>MySQL relational database designed for end-to-end revenue tracking and business intelligence analytics.</p>
                 <a href="https://github.com/Dunia-khanfa/Order-Analytics-System" class="btn-link" target="_blank">Explore DB ↗</a>
             </div>
             <div class="project-visual">
-                <img src="https://images.unsplash.com/photo-1484417824218-91223b4d075d?q=80&w=1500" alt="Code">
+                <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=1000" alt="SQL Database">
             </div>
         </div>
     </section>
@@ -265,26 +267,7 @@
     </footer>
 </div>
 
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
-    // --- Particles Configuration (The "Magic") ---
-    particlesJS("particles-js", {
-        "particles": {
-            "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-            "color": { "value": "#ffffff" },
-            "shape": { "type": "circle" },
-            "opacity": { "value": 0.5, "random": true },
-            "size": { "value": 2, "random": true },
-            "line_linked": { "enable": false },
-            "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
-        },
-        "interactivity": {
-            "detect_on": "canvas",
-            "events": { "onhover": { "enable": true, "mode": "bubble" } },
-            "modes": { "bubble": { "distance": 200, "size": 3, "duration": 2, "opacity": 0.8 } }
-        }
-    });
-
     // GSAP Registration
     gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
@@ -294,16 +277,14 @@
         tl.to(".loader-text", { opacity: 1, duration: 0.8 })
           .to("#loader", { yPercent: -100, duration: 1, ease: "expo.inOut", delay: 1 })
           .to("nav", { opacity: 1, duration: 1 }, "-=0.5")
-          .to(".hero-portrait", { opacity: 1, scale: 1, duration: 1.2, ease: "back.out(1.7)" }, "-=0.8")
-          .to(".hero-badge", { opacity: 1, y: 0, duration: 1 }, "-=1")
-          // Typing Animation for H1
-          .to("#typing-hero", { text: "Designing<br>The Data<br>Strategy.", duration: 2.5, ease: "none" }, "-=0.5")
+          .to(".hero-top", { opacity: 1, y: 0, duration: 1 }, "-=0.8")
+          // Typing Animation Target for H1
+          .to("#typing-hero", { text: "Designing<br>The Data<br>Strategy.", duration: 2.5, ease: "none" }, "-=0.3")
           .to(".hero-sub", { opacity: 1, y: 0, duration: 1 }, "-=0.5");
     
         // Initial state sets
         gsap.set("nav", { opacity: 0 });
-        gsap.set(".hero-portrait", { opacity: 0, scale: 0.5 });
-        gsap.set(".hero-badge", { opacity: 0, y: 20 });
+        gsap.set(".hero-top", { opacity: 0, y: 30 });
         gsap.set(".hero-sub", { opacity: 0, y: 20 });
     });
 
